@@ -26,7 +26,6 @@ public class ServerListMixin {
                 hideMethod.invoke(fieldValue);
             } catch (Exception e) {
                 try { // it's a `net.minecraft.client.gui.GuiButton`
-                    System.out.println("visible found!");
                     Field visible = fieldValue.getClass().getField("visible");
                     visible.set(fieldValue, false);
                 } catch (Exception ignored) {}
