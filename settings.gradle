@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        // Add the main W-OVERFLOW Repository
+        maven {
+            name = "WOVERFLOW"
+            url = "https://repo.woverflow.cc"
+        }
+    }
+    resolutionStrategy {
+        eachPlugin {
+            switch (requested.id.id) {
+                case 'net.minecraftforge.gradle.forge':
+                    useModule "com.github.asbyth:ForgeGradle:${requested.version}"
+                    break
+                case 'org.spongepowered.mixin':
+                    useModule "com.github.Skytils:MixinGradle:${requested.version}"
+                    break
+            }
+        }
+    }
+}
+
+rootProject.name = mod_name
