@@ -1,5 +1,6 @@
 package com.example.template.mixin;
 
+import gg.essential.universal.ChatColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMultiplayer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,8 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EssentialConfigMixin {
     @Inject(method = "Lgg/essential/config/EssentialConfig;getEssentialFull()Z", at = @At("RETURN"), cancellable = true)
     public void getEssentialFull(CallbackInfoReturnable<Boolean> clr) {
-        if (Minecraft.getMinecraft().currentScreen instanceof GuiMultiplayer) {
-            clr.setReturnValue(false);
-        }
+        if (!(Minecraft.getMinecraft().currentScreen instanceof GuiMultiplayer)) return;
+        clr.setReturnValue(false);
     }
 }
