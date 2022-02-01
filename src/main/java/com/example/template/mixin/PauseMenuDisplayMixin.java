@@ -8,6 +8,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Pseudo
 @Mixin(targets = "gg.essential.handlers.PauseMenuDisplay")
@@ -21,8 +23,7 @@ public class PauseMenuDisplayMixin {
                 if (fieldValue == null) continue;
                 Method hideMethod = fieldValue.getClass().getMethod("hide");
                 hideMethod.invoke(fieldValue);
-            } catch (Exception ignored) {
-            }
+            } catch (Exception ignored) {}
         }
     }
 }

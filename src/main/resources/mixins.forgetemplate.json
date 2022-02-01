@@ -5,7 +5,8 @@
   "refmap": "mixins.${id}.refmap.json",
   "mixins": [
     "PauseMenuDisplayMixin",
-    "ServerListMixin"
+    "ServerListMixin",
+    "EssentialConfigMixin"
   ],
   "verbose": true
 }
