@@ -1,4 +1,4 @@
-package com.example.template.mixin;
+package com.github.u9g.notsoessential.mixin;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

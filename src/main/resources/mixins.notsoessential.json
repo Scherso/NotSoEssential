@@ -1,8 +1,8 @@
 {
   "compatibilityLevel": "JAVA_8",
   "minVersion": "0.7",
-  "package": "com.example.template.mixin",
-  "refmap": "mixins.${id}.refmap.json",
+  "package": "com.github.u9g.notsoessential.mixin",
+  "refmap": "mixins.notsoessential.refmap.json",
   "mixins": [
     "PauseMenuDisplayMixin",
     "ServerListMixin",

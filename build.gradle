@@ -2,78 +2,81 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "6f53277"
     id "com.github.johnrengelman.shadow" version "6.1.0"
     id 'org.spongepowered.mixin' version "d5f9873"
-    id "net.kyori.blossom" version "1.3.0"
     id "java"
 }
 
-version = mod_version
-group = "com.example"
-archivesBaseName = mod_name
-
-blossom {
-    String className = "src/main/java/com/example/template/ForgeTemplate.java"
-    replaceToken("@VER@", project.version, className)
-    replaceToken("@NAME@", mod_name, className)
-    replaceToken("@ID@", mod_id, className)
-}
+version = projectVersion
+group = projectGroup
+archivesBaseName = projectName
 
 sourceCompatibility = targetCompatibility = 1.8
-compileJava.options.encoding = 'UTF-8'
+compileJava.options.encoding = "UTF-8"
 
 minecraft {
     version = "1.8.9-11.15.1.2318-1.8.9"
     runDir = "run"
     mappings = "stable_22"
     makeObfSourceJar = false
+    replace('@NAME@', projectName)
+    replace('@VER@': projectVersion)
+    replace('@ID@', projectId)
 
-    clientRunArgs += "--mixin mixins.${mod_id}.json"
+    // setting client run arguments for my mixins, and Essential's setup tweaker.
+    clientRunArgs += "--mixin mixins.${projectId}.json"
     clientRunArgs += '--tweakClass gg.essential.loader.stage0.EssentialSetupTweaker'
 }
 
 configurations {
-    // Creates an extra configuration that implements `implementation` to be used later as the configuration that shades libraries
-    include
-    implementation.extendsFrom(include)
+    // shade is a plugin used to create a shaded jar, I use it to "shade" dependencies.
+    shade
+    implementation.extendsFrom(shade)
 }
 
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io/' }
+    maven { url "https://repo.sk1er.club/repository/maven-public/" }
     maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
-    maven { url 'https://repo.sk1er.club/repository/maven-releases/' }
 }
 
 dependencies {
-    include ('gg.essential:loader-launchwrapper:1.1.2') {
+    // Funny that we're using essential in a mod to remove essential features, isn't it.
+    shade ("gg.essential:loader-launchwrapper:${essentialVersion}") {
         transitive = false
     }
     implementation 'gg.essential:essential-1.8.9-forge:1626+release-launch'
+
     annotationProcessor 'org.spongepowered:mixin:0.7.11-SNAPSHOT'
 }
 
-/**
- * This task simply replaces the `${version}` and `${mcversion}` properties in the mcmod.info with the data from Gradle
- */
 processResources {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", version
-    inputs.property "mcversion", minecraft.version
-    inputs.property "name", mod_name
-    inputs.property "id", mod_id
+    inputs.property("version", version)
+    inputs.property("mcversion", minecraft.version)
 
     filesMatching("mcmod.info") {
         expand(
-                "id": mod_id,
-                "name": mod_name,
+                "id": projectId,
+                "name": projectName,
                 "version": version,
                 "mcversion": minecraft.version
         )
     }
-    filesMatching("mixins.${mod_id}.json") {
-        expand("id": mod_id)
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
     }
+}
 
-    rename '(.+_at.cfg)', 'META-INF/$1'
+task moveResources {
+    doLast {
+        try {
+            ant.move(
+                    file: "${buildDir}/resources/main",
+                    todir: "${buildDir}/classes/java"
+            )
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 jar {
@@ -81,35 +84,23 @@ jar {
             'ModSide': 'CLIENT',
             'ForceLoadAsMod': true,
             'TweakClass': 'gg.essential.loader.stage0.EssentialSetupTweaker',
-            'MixinConfigs': "mixins.${mod_id}.json"
+            'MixinConfigs': "mixins.${projectId}.json"
     )
+
     enabled = false
 }
-
-/**
- * This task simply moves resources so they can be accessed at runtime, Forge is quite weird isn't it
- */
-task moveResources {
-    doLast {
-        ant.move file: "${buildDir}/resources/main",
-            todir: "${buildDir}/classes/java"
-    }
-}
-
-moveResources.dependsOn processResources
-classes.dependsOn moveResources
 
 mixin {
     disableRefMapWarning = true
     defaultObfuscationEnv searge
-    add sourceSets.main, "mixins.${mod_id}.refmap.json"
+    add sourceSets.main, "mixins.${projectId}.refmap.json"
 }
 
-// This adds support to ("include") libraries into our JAR
 shadowJar {
-    archiveClassifier.set('')
-    configurations = [project.configurations.include]
+    configurations = [project.configurations.shade]
     duplicatesStrategy DuplicatesStrategy.EXCLUDE
+
+    archiveClassifier.set("")
 }
 
 reobf {
@@ -118,9 +109,10 @@ reobf {
     }
 }
 
-tasks.reobfJar.dependsOn tasks.shadowJar
 sourceSets {
     main {
-        ext.refMap = "mixins.${mod_id}.refmap.json"
+        ext.refMap = "mixins.${projectId}.refmap.json"
     }
 }
+
+tasks.reobfJar.dependsOn tasks.shadowJar

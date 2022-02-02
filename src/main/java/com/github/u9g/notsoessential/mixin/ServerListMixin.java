@@ -1,4 +1,4 @@
-package com.example.template.mixin;
+package com.github.u9g.notsoessential.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;

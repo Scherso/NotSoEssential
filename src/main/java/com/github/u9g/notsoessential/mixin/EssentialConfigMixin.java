@@ -1,6 +1,5 @@
-package com.example.template.mixin;
+package com.github.u9g.notsoessential.mixin;
 
-import gg.essential.universal.ChatColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMultiplayer;
 import org.spongepowered.asm.mixin.Mixin;
