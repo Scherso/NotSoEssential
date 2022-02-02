@@ -28,6 +28,11 @@ public class EssentialConfigMixin {
     }
 
     @Inject(method = "Lgg/essential/config/EssentialConfig;getStreamerMode()Z", at = @At("RETURN"), cancellable = true)
+    public void getStreamerMode(CallbackInfoReturnable<Boolean> clr) {
+        clr.setReturnValue(true);
+    }
+
+    @Inject(method = "Lgg/essential/config/EssentialConfig;getDisableAllNotifications()Z", at = @At("RETURN"), cancellable = true)
     public void getEssentialNotifs(CallbackInfoReturnable<Boolean> clr) {
         clr.setReturnValue(true);
     }
