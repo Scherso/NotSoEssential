@@ -16,4 +16,20 @@ public class EssentialConfigMixin {
         if (!(Minecraft.getMinecraft().currentScreen instanceof GuiMultiplayer)) return;
         clr.setReturnValue(false);
     }
+
+    @Inject(method = "Lgg/essential/config/EssentialConfig;getShowEssentialIndicatorOnTab()Z", at = @At("RETURN"), cancellable = true)
+    public void getTabIndicators(CallbackInfoReturnable<Boolean> clr) {
+        clr.setReturnValue(false);
+    }
+
+    @Inject(method = "Lgg/essential/config/EssentialConfig;getShowEssentialIndicatorOnNametag()Z", at = @At("RETURN"), cancellable = true)
+    public void getNameTagIndicators(CallbackInfoReturnable<Boolean> clr) {
+        clr.setReturnValue(false);
+    }
+
+    @Inject(method = "Lgg/essential/config/EssentialConfig;getStreamerMode()Z", at = @At("RETURN"), cancellable = true)
+    public void getEssentialNotifs(CallbackInfoReturnable<Boolean> clr) {
+        clr.setReturnValue(true);
+    }
+
 }

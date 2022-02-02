@@ -1,9 +1,9 @@
 [
   {
-    "modid": "${projectId}",
-    "name": "${projectName}",
+    "modid": "${id}",
+    "name": "${name}",
     "description": "Keeps only what's Essential.",
-    "version": "${projectVersion}",
+    "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "https://github.com/u9g/NotSoEssential",
     "updateUrl": "",
