@@ -17,17 +17,17 @@ minecraft {
     runDir = "run"
     mappings = "stable_22"
     makeObfSourceJar = false
+    // property references...
     replace('@NAME@', projectName)
     replace('@VER@': projectVersion)
     replace('@ID@', projectId)
 
-    // setting client run arguments for my mixins, and Essential's setup tweaker.
+    // JVM args...
     clientRunArgs += "--mixin mixins.${projectId}.json"
     clientRunArgs += '--tweakClass gg.essential.loader.stage0.EssentialSetupTweaker'
 }
 
 configurations {
-    // shade is a plugin used to create a shaded jar, I use it to "shade" dependencies.
     shade
     implementation.extendsFrom(shade)
 }
@@ -40,13 +40,17 @@ repositories {
 }
 
 dependencies {
-    // Funny that we're using essential in a mod to remove essential features, isn't it.
+    // essential...
     shade ("gg.essential:loader-launchwrapper:${essentialVersion}") {
         transitive = false
     }
     implementation 'gg.essential:essential-1.8.9-forge:1626+release-launch'
 
-    annotationProcessor 'org.spongepowered:mixin:0.7.11-SNAPSHOT'
+    // mixins...
+    compileOnly(annotationProcessor("org.spongepowered:mixin:${spongePoweredMixinVersion}"))
+    annotationProcessor("com.google.code.gson:gson:${gsonVersion}")
+    annotationProcessor("com.google.guava:guava:${guavaVersion}")
+    annotationProcessor("org.ow2.asm:asm-tree:${asmTreeVersion}")
 }
 
 processResources {
