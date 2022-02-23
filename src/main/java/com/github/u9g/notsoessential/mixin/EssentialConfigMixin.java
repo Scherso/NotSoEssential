@@ -33,8 +33,13 @@ public class EssentialConfigMixin {
     }
 
     @Inject(method = "Lgg/essential/config/EssentialConfig;getDisableAllNotifications()Z", at = @At("RETURN"), cancellable = true)
-    public void getEssentialNotifs(CallbackInfoReturnable<Boolean> clr) {
+    public void getDisableAllNotifications(CallbackInfoReturnable<Boolean> clr) {
         clr.setReturnValue(true);
+    }
+
+    @Inject(method = "Lgg/essential/config/EssentialConfig;getOpenToFriends()Z", at = @At("RETURN"), cancellable = true)
+    public void getOpenToFriends(CallbackInfoReturnable<Boolean> clr) {
+        clr.setReturnValue(false);
     }
 
 }
