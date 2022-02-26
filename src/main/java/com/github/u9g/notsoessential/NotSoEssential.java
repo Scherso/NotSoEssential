@@ -24,8 +24,8 @@ public class NotSoEssential {
     @Mod.EventHandler
     protected void onInitialization(FMLInitializationEvent event) {
         new NSECommand().register();
-        config = new NSEConfig();
-        config.preload();
+        this.config = new NSEConfig();
+        this.config.preload();
     }
 
 }
