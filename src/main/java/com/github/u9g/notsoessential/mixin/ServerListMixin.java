@@ -1,4 +1,4 @@
-package com.example.template.mixin;
+package com.github.u9g.notsoessential.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+@SuppressWarnings("UnresolvedMixinReference")
 @Pseudo
 @Mixin(targets = "gg.essential.gui.multiplayer.EssentialMultiplayerGui")
 public class ServerListMixin {
