@@ -2,15 +2,15 @@
   {
     "modid": "${id}",
     "name": "${name}",
-    "description": "An example template",
+    "description": "Keeps only what's Essential.",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "",
+    "url": "https://github.com/u9g/NotSoEssential",
     "updateUrl": "",
     "authorList": [
-      "W-OVERFLOW"
+      "U9G"
     ],
-    "credits": "",
+    "credits": "Salmon",
     "logoFile": "",
     "screenshots": [],
     "dependencies": []
