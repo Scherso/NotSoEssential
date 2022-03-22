@@ -3,26 +3,37 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
 
-        // Add the Forge Repository (ForgeGradle fetches most of its stuff from here)
+        maven {
+            name = "Architectury Loom"
+            url = "https://maven.architectury.dev/"
+        }
+
+        maven {
+            name = "Fabric"
+            url = "https://maven.fabricmc.net"
+        }
+
+        maven {
+            name = "Sk1er"
+            url = "https://repo.sk1er.club/repository/maven-public/"
+        }
+
         maven {
             name = "Forge"
             url = "https://maven.minecraftforge.net"
         }
 
-        // Add the Jitpack Repository (We fetch ForgeGradle from this)
         maven {
             name = "Jitpack"
             url = "https://jitpack.io/"
         }
     }
+
     resolutionStrategy {
         eachPlugin {
             switch (requested.id.id) {
-                case 'net.minecraftforge.gradle.forge':
-                    useModule "com.github.asbyth:ForgeGradle:${requested.version}"
-                    break
-                case 'org.spongepowered.mixin':
-                    useModule "com.github.Skytils:MixinGradle:${requested.version}"
+                case "gg.essential.loom":
+                    useModule "gg.essential:architectury-loom:${requested.version}"
                     break
             }
         }
