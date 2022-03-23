@@ -1,28 +1,21 @@
 package com.github.u9g.notsoessential.command;
 
 import com.github.u9g.notsoessential.NotSoEssential;
-import net.minecraft.client.Minecraft;
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
+import gg.essential.api.commands.Command;
+import gg.essential.api.commands.DefaultHandler;
+import gg.essential.universal.ChatColor;
+import gg.essential.universal.UChat;
+import gg.essential.universal.wrappers.message.UTextComponent;
 
-public class NSECommand extends CommandBase {
+public class NSECommand extends Command {
 
-    public String getCommandName() {
-        return NotSoEssential.ID;
+    public NSECommand() {
+        super(NotSoEssential.ID, true);
     }
 
-    public String getCommandUsage(ICommandSender sender) {
-        return "/" + this.getCommandName();
-    }
-
-    public boolean canCommandSenderUseCommand(ICommandSender sender) {
-        return true;
-    }
-
-    public void processCommand(ICommandSender sender, String[] args) {
-        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText( EnumChatFormatting.GRAY + "[" + EnumChatFormatting.RED + "Not So " + EnumChatFormatting.GREEN + "Essential" + EnumChatFormatting.GRAY + "] " + EnumChatFormatting.YELLOW + "Why hello there."));
+    @DefaultHandler
+    public void Handle() {
+        UChat.chat(new UTextComponent(ChatColor.GRAY + "[" + ChatColor.RED + "Not So " + ChatColor.GREEN + "Essential" + ChatColor.GRAY + "] " + ChatColor.YELLOW + "Why hello there."));
     }
 
 }

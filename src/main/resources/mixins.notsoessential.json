@@ -8,7 +8,8 @@
     "ServerListMixin",
     "EssentialConfigMixin",
     "GuiMultiplayerMixin",
-    "GuiOptionsEditorMixin"
+    "GuiOptionsEditorMixin",
+    "EssentialKeybindingMixin"
   ],
   "verbose": true
 }
