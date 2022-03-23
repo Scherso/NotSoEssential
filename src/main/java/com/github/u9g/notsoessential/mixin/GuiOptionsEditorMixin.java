@@ -6,6 +6,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
 @SuppressWarnings("UnresolvedMixinReference")
 @Pseudo
 @Mixin(targets = "gg.essential.gui.GuiOptionsEditor")
@@ -16,6 +20,7 @@ public class GuiOptionsEditorMixin {
      */
     @Inject(method = "Lgg/essential/gui/GuiOptionsEditor;guiOptionsInit()V", at = @At("HEAD"), cancellable = true)
     private void GuiOptionsInit(CallbackInfo ci) {
+        Arrays.stream(this.getClass().getDeclaredFields()).forEach(field -> field.setAccessible(true));
         ci.cancel();
     }
 
