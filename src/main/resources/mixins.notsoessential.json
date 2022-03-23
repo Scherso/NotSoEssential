@@ -9,7 +9,8 @@
     "EssentialConfigMixin",
     "GuiMultiplayerMixin",
     "GuiOptionsEditorMixin",
-    "EssentialKeybindingMixin"
+    "EssentialKeybindingMixin",
+    "OnboardingDataMixin"
   ],
   "verbose": true
 }
