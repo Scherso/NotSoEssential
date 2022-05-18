@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-@SuppressWarnings("UnresolvedMixinReference")
 @Pseudo
+@SuppressWarnings("UnresolvedMixinReference")
 @Mixin(targets = "gg.essential.handlers.PauseMenuDisplay")
 public class PauseMenuDisplayMixin {
     @Inject(method = "Lgg/essential/handlers/PauseMenuDisplay;init(Lnet/minecraft/client/gui/GuiScreen;Z)V", at = @At("TAIL"))

@@ -9,11 +9,6 @@ public class NotSoEssential {
 
     public static final String NAME = "@NAME@", VER = "@VER@", ID = "@ID@";
 
-    /*
-    @Mod.Instance(ID)
-    public static NotSoEssential instance;
-    */
-
     @Mod.EventHandler
     protected void onInitialization(FMLInitializationEvent event) {
         new NSECommand().register();
