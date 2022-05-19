@@ -1,8 +1,11 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import dev.architectury.pack200.java.Pack200Adapter
+import net.fabricmc.loom.task.RemapJarTask
 
 plugins {
     kotlin("jvm") version("1.6.21")
     id("dev.architectury.architectury-pack200") version("0.1.3")
+    id("com.github.johnrengelman.shadow") version ("7.1.+")
     id("gg.essential.loom") version("0.10.0.+")
     id("net.kyori.blossom") version("1.3.0")
     java
@@ -24,6 +27,7 @@ blossom {
 }
 
 loom {
+    silentMojangMappingsLicense()
     launchConfigs {
         getByName("client") {
             arg("--tweakClass", "gg.essential.loader.stage0.EssentialSetupTweaker")
@@ -50,8 +54,8 @@ repositories {
     maven("https://repo.spongepowered.org/repository/maven-public/")
 }
 
-val embed by configurations.creating
-configurations.implementation.get().extendsFrom(embed)
+val shade by configurations.creating
+configurations.implementation.get().extendsFrom(shade)
 
 dependencies {
     minecraft("com.mojang:minecraft:1.8.9")
@@ -59,7 +63,7 @@ dependencies {
     forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
 
-    embed(libs.essentialwrapper)
+    shade(libs.essentialwrapper)
     implementation(libs.essential)
 
     compileOnly(libs.mixin)
@@ -87,18 +91,55 @@ tasks {
                 "id" to projectId
             )
         }
+        dependsOn(compileJava)
     }
 
     named<Jar>("jar") {
         archiveBaseName.set(projectName)
+        manifest {
+            attributes(
+                "ModSide" to "CLIENT",
+                "ForceloadAsMod" to true,
+                "TweakClass" to "gg.essential.loader.stage0.EssentialSetupTweaker",
+                "TweakOrder" to "0",
+                "MixinConfigs" to "mixins.${projectId}.json"
+            )
+        }
+        dependsOn(shadowJar)
+        enabled = false
+    }
+
+    named<RemapJarTask>("remapJar") {
+        archiveBaseName.set(projectName)
+        input.set(shadowJar.get().archiveFile)
+    }
+
+    named<ShadowJar>("shadowJar") {
+        archiveBaseName.set(projectName)
+        archiveClassifier.set("dev")
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        manifest.attributes(
-            "ModSide" to "CLIENT",
-            "ForceloadAsMod" to true,
-            "TweakClass" to "gg.essential.loader.stage0.EssentialSetupTweaker",
-            "TweakOrder" to "0",
-            "MixinConfigs" to "mixins.${projectId}.json"
+        configurations = listOf(shade)
+
+        exclude(
+            "**/LICENSE.md",
+            "**/LICENSE.txt",
+            "**/LICENSE",
+            "**/NOTICE",
+            "**/NOTICE.txt",
+            "pack.mcmeta",
+            "dummyThing",
+            "**/module-info.class",
+            "META-INF/proguard/**",
+            "META-INF/maven/**",
+            "META-INF/versions/**",
+            "META-INF/com.android.tools/**",
+            "fabric.mod.json"
         )
+        mergeServiceFiles()
+    }
+
+    withType<JavaCompile> {
+        options.encoding = "UTF-8"
     }
 }
 
