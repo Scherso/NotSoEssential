@@ -29,6 +29,11 @@
   
 </h4>
 
+<h5 align="center">
+    
+    Build it yourself, I'm not giving you a download :)
+    
+</h5>
 
 [forge]: https://files.minecraftforge.net/net/minecraftforge/forge/index_1.8.9.html
 [build]: https://github.com/Scherso/NotSoEssential/wiki/Build-With-Gradle
