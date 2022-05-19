@@ -31,7 +31,7 @@
 
 <h5 align="center">
     
-    Build it yourself, I'm not giving you a download :)
+  Build it yourself, I'm not giving you a download :)
     
 </h5>
 
