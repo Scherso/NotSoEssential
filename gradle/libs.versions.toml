@@ -1,0 +1,9 @@
+[versions]
+essentialwrapper = "1.1.3"
+essential = "2487"
+mixin = "0.8.5-SNAPSHOT"
+
+[libraries]
+essentialwrapper = { module = "gg.essential:loader-launchwrapper", version.ref = "essentialwrapper"}
+essential = { module = "gg.essential:essential-1.8.9-forge", version.ref = "essential" }
+mixin = { module = "org.spongepowered:mixin", version.ref = "mixin" }
