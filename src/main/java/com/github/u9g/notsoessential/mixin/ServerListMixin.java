@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-@SuppressWarnings("UnresolvedMixinReference")
 @Pseudo
+@SuppressWarnings("UnresolvedMixinReference")
 @Mixin(targets = "gg.essential.gui.multiplayer.EssentialMultiplayerGui")
 public class ServerListMixin {
     @Inject(method = "Lgg/essential/gui/multiplayer/EssentialMultiplayerGui;initGui(Lnet/minecraft/client/gui/GuiScreen;)V", at = @At("TAIL"))
