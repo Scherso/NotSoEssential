@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(targets = "gg.essential.key.EssentialKeybindingRegistry")
 public class EssentialKeybindingRegistryMixin {
 
-    @Inject(method = "Lgg/essential/key/EssentialKeybindingRegistry;registerKeyBinds()V", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "registerKeyBinds()V", at = @At("HEAD"), cancellable = true, remap = false)
     public void registerKeyBinds(CallbackInfo ci) {
         ci.cancel();
     }
