@@ -1,6 +1,5 @@
 {
   "compatibilityLevel": "JAVA_8",
-  "minVersion": "0.7",
   "package": "com.github.u9g.notsoessential.mixin",
   "refmap": "mixins.notsoessential.refmap.json",
   "mixins": [
@@ -9,8 +8,7 @@
     "EssentialConfigMixin",
     "GuiMultiplayerMixin",
     "GuiOptionsEditorMixin",
-    "EssentialKeybindingMixin",
+    "EssentialKeybindingRegistryMixin",
     "OnboardingDataMixin"
-  ],
-  "verbose": true
+  ]
 }
