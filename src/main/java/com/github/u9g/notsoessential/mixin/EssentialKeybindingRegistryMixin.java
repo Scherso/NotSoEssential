@@ -8,16 +8,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
 @SuppressWarnings("UnresolvedMixinReference")
-@Mixin(targets = "gg.essential.key.EssentialKeybinding")
-public class EssentialKeybindingMixin {
+@Mixin(targets = "gg.essential.key.EssentialKeybindingRegistry")
+public class EssentialKeybindingRegistryMixin {
 
-    @Inject(method = "Lgg/essential/key/EssentialKeybinding;register()V", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "Lgg/essential/key/EssentialKeybindingRegistry;registerKeyBinds()V", at = @At("HEAD"), cancellable = true, remap = false)
     public void registerKeyBinds(CallbackInfo ci) {
-        ci.cancel();
-    }
-
-    @Inject(method = "Lgg/essential/key/EssentialKeybinding;EssentialKeybinding()V", at = @At("HEAD"), cancellable = true)
-    public void EssentialKeybinding(CallbackInfo ci) {
         ci.cancel();
     }
 

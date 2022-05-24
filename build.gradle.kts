@@ -15,8 +15,7 @@ val projectName: String by project
 val projectId: String by project
 val projectVersion: String by project
 val projectGroup: String by project
-val mcVersion: String =
-    property("minecraft.version")?.toString() ?: throw IllegalStateException("minecraft.version is not set...")
+val mcVersion: String = property("minecraft.version")?.toString() ?: throw IllegalStateException("minecraft.version is not set...")
 
 version = projectVersion
 group = projectGroup

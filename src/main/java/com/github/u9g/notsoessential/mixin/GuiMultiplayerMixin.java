@@ -20,4 +20,5 @@ public class GuiMultiplayerMixin {
         if (!(Minecraft.getMinecraft().currentScreen instanceof GuiMultiplayer)) return;
         instance.drawCenteredString(fontRenderer, I18n.format("multiplayer.title", new Object[0]), instance.width / 2, 20, 16777215);
     }
+
 }
