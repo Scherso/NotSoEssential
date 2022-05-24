@@ -1,11 +1,14 @@
 package com.github.u9g.notsoessential.command;
 
 import com.github.u9g.notsoessential.NotSoEssential;
+import com.google.common.collect.Sets;
 import gg.essential.api.commands.Command;
 import gg.essential.api.commands.DefaultHandler;
 import gg.essential.universal.ChatColor;
 import gg.essential.universal.UChat;
 import gg.essential.universal.wrappers.message.UTextComponent;
+
+import java.util.Set;
 
 public class NSECommand extends Command {
 
@@ -16,6 +19,12 @@ public class NSECommand extends Command {
     @DefaultHandler
     public void Handle() {
         UChat.chat(new UTextComponent(ChatColor.GRAY + "[" + ChatColor.RED + "Not So " + ChatColor.GREEN + "Essential" + ChatColor.GRAY + "] " + ChatColor.YELLOW + "Why hello there."));
+    }
+
+    public Set<Alias> getCommandAliases() {
+        return Sets.newHashSet(
+                new Alias("nse")
+        );
     }
 
 }
