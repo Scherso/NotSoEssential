@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(targets = "gg.essential.gui.GuiOptionsEditor")
 public class GuiOptionsEditorMixin {
 
-    @Inject(method = "Lgg/essential/gui/GuiOptionsEditor;guiOptionsInit()V", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "guiOptionsInit()V", at = @At("HEAD"), cancellable = true, remap = false)
     private void GuiOptionsInit(CallbackInfo ci) {
         if (Minecraft.getMinecraft().currentScreen instanceof GuiOptions) {
             ci.cancel();
