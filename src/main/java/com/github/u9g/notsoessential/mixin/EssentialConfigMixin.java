@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(targets = "gg.essential.config.EssentialConfig")
 public class EssentialConfigMixin {
 
-    @Inject(method = "Lgg/essential/config/EssentialConfig;getEssentialFull()Z", at = @At("RETURN"), cancellable = true, remap = false)
+    @Inject(method = "getEssentialFull()Z", at = @At("RETURN"), cancellable = true, remap = false)
     public void getEssentialFull(CallbackInfoReturnable<Boolean> clr) {
         if (!(Minecraft.getMinecraft().currentScreen instanceof GuiMultiplayer)) return;
         clr.setReturnValue(false);
