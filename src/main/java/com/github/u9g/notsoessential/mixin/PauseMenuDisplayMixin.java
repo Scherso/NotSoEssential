@@ -22,7 +22,8 @@ public class PauseMenuDisplayMixin {
                 if (fieldValue == null) continue;
                 Method hideMethod = fieldValue.getClass().getMethod("hide");
                 hideMethod.invoke(fieldValue);
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 }

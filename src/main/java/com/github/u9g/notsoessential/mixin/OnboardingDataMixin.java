@@ -15,9 +15,9 @@ public abstract class OnboardingDataMixin implements gg.essential.api.data.Onboa
      *
      * @author Steviegt6, https://github.com/Steviegt6
      */
-    @Inject(method = "hasAcceptedEssentialTOS", at = @At("HEAD"), remap = false, cancellable = true)
-    private void hasAcceptedEssentialTOS(CallbackInfoReturnable<Boolean> clr) {
-        clr.setReturnValue(false);
+    @Inject(method = "hasDeniedEssentialTOS", at = @At("HEAD"), remap = false, cancellable = true)
+    private static void overrideHasDeniedTos(CallbackInfoReturnable<Boolean> clr) {
+        clr.setReturnValue(true);
     }
 
     /**
@@ -26,9 +26,9 @@ public abstract class OnboardingDataMixin implements gg.essential.api.data.Onboa
      *
      * @author Steviegt6, https://github.com/Steviegt6
      */
-    @Inject(method = "hasDeniedEssentialTOS", at = @At("HEAD"), remap = false, cancellable = true)
-    private static void overrideHasDeniedTos(CallbackInfoReturnable<Boolean> clr) {
-        clr.setReturnValue(true);
+    @Inject(method = "hasAcceptedEssentialTOS", at = @At("HEAD"), remap = false, cancellable = true)
+    private void hasAcceptedEssentialTOS(CallbackInfoReturnable<Boolean> clr) {
+        clr.setReturnValue(false);
     }
 
 }
