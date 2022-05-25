@@ -26,6 +26,7 @@
   - Remove invite friends option
   - Remove cosmetic options
   - Remove notifications
+  - "Essential Settings..." Removed in place of "Snooper Settings..."
   
 </h4>
 
