@@ -20,7 +20,8 @@ public class ServerListMixin {
             Object fieldValue = null;
             try {
                 fieldValue = field.get(this);
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
             if (fieldValue == null) continue;
             try { // it's a UIElement from essential
                 Method hideMethod = fieldValue.getClass().getMethod("hide");
@@ -29,7 +30,8 @@ public class ServerListMixin {
                 try { // it's a `net.minecraft.client.gui.GuiButton`
                     Field visible = fieldValue.getClass().getField("visible");
                     visible.set(fieldValue, false);
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
         }
     }

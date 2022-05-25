@@ -3,12 +3,11 @@
   "package": "com.github.u9g.notsoessential.mixin",
   "refmap": "mixins.notsoessential.refmap.json",
   "mixins": [
-    "PauseMenuDisplayMixin",
-    "ServerListMixin",
     "EssentialConfigMixin",
     "GuiMultiplayerMixin",
     "GuiOptionsEditorMixin",
-    "EssentialKeybindingRegistryMixin",
-    "OnboardingDataMixin"
+    "OnboardingDataMixin",
+    "PauseMenuDisplayMixin",
+    "ServerListMixin"
   ]
 }
