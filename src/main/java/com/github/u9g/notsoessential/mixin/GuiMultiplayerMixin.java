@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Pseudo
 @Mixin(GuiMultiplayer.class)
 public class GuiMultiplayerMixin {
+
     @Redirect(
             method = "drawScreen(IIF)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiMultiplayer;drawCenteredString(Lnet/minecraft/client/gui/FontRenderer;Ljava/lang/String;III)V")
@@ -20,5 +21,4 @@ public class GuiMultiplayerMixin {
         if (!(Minecraft.getMinecraft().currentScreen instanceof GuiMultiplayer)) return;
         instance.drawCenteredString(fontRenderer, I18n.format("multiplayer.title"), instance.width / 2, 20, 16777215);
     }
-
 }
