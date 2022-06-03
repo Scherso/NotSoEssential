@@ -13,6 +13,7 @@ import java.lang.reflect.Method;
 @SuppressWarnings("UnresolvedMixinReference")
 @Mixin(targets = "gg.essential.gui.multiplayer.EssentialMultiplayerGui")
 public class ServerListMixin {
+
     @Inject(method = "initGui(Lnet/minecraft/client/gui/GuiScreen;)V", at = @At("TAIL"), remap = false)
     public void initGui(CallbackInfo ci) {
         for (Field field : this.getClass().getDeclaredFields()) {

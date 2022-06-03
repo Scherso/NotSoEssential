@@ -13,6 +13,7 @@ import java.lang.reflect.Method;
 @SuppressWarnings("UnresolvedMixinReference")
 @Mixin(targets = "gg.essential.handlers.PauseMenuDisplay")
 public class PauseMenuDisplayMixin {
+
     @Inject(method = "init(Lnet/minecraft/client/gui/GuiScreen;Z)V", at = @At("TAIL"), remap = false)
     public void init(CallbackInfo ci) {
         for (Field field : this.getClass().getDeclaredFields()) {

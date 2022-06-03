@@ -15,5 +15,4 @@ public class GuiOptionsEditorMixin {
     private void GuiOptionsInit(CallbackInfo ci) {
         ci.cancel();
     }
-
 }

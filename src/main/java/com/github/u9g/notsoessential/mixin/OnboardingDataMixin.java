@@ -30,5 +30,4 @@ public abstract class OnboardingDataMixin implements gg.essential.api.data.Onboa
     private void hasAcceptedEssentialTOS(CallbackInfoReturnable<Boolean> clr) {
         clr.setReturnValue(false);
     }
-
 }
