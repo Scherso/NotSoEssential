@@ -17,16 +17,12 @@ public class EssentialConfigMixin {
 
     @Inject(method = "getEssentialFull()Z", at = @At("RETURN"), cancellable = true, remap = false)
     public void getEssentialFull(CallbackInfoReturnable<Boolean> clr) {
-        if (!(Minecraft.getMinecraft().currentScreen instanceof GuiMultiplayer)) return;
         clr.setReturnValue(false);
     }
 
-    @Inject(method = "getEssentialFull()Z", at = @At("RETURN"), cancellable = true, remap = false)
-    public void getEssentialFullMenu(CallbackInfoReturnable<Boolean> clr) {
-        if (Minecraft.getMinecraft().currentScreen instanceof GuiMainMenu)
-            clr.setReturnValue(true);
-        else if (Minecraft.getMinecraft().currentScreen instanceof GuiIngameMenu)
-            clr.setReturnValue(true);
+    @Inject(method = "getDisableCosmetics()Z", at = @At("RETURN"), cancellable = true, remap = false)
+    public void getDisableCosmetics(CallbackInfoReturnable<Boolean> clr) {
+        clr.setReturnValue(true);
     }
 
     @Inject(method = "getShowEssentialIndicatorOnTab()Z", at = @At("RETURN"), cancellable = true, remap = false)

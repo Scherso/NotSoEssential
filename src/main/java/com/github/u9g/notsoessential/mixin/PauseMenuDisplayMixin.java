@@ -6,14 +6,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+// import java.lang.reflect.Field;
+// import java.lang.reflect.Method;
 
 @Pseudo
 @SuppressWarnings("UnresolvedMixinReference")
 @Mixin(targets = "gg.essential.handlers.PauseMenuDisplay")
 public class PauseMenuDisplayMixin {
 
+    /*
     @Inject(method = "init(Lnet/minecraft/client/gui/GuiScreen;Z)V", at = @At("TAIL"), remap = false)
     public void init(CallbackInfo ci) {
         for (Field field : this.getClass().getDeclaredFields()) {
@@ -26,5 +27,10 @@ public class PauseMenuDisplayMixin {
             } catch (Exception ignored) {
             }
         }
+    }
+    */
+    @Inject(method = "init", at = @At("HEAD"), cancellable = true, remap = false)
+    public void init(CallbackInfo ci) {
+        ci.cancel(); // lo
     }
 }
