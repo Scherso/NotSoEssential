@@ -36,13 +36,14 @@ public class EssentialConfigTransformer implements ITransformer {
         InsnList list = new InsnList();
         list.add(new InsnNode(Opcodes.ICONST_0));
         list.add(new InsnNode(Opcodes.IRETURN));
-        return list;
+        return (list);
     }
 
     private InsnList functionReturnTrue() {
         InsnList list = new InsnList();
         list.add(new InsnNode(Opcodes.ICONST_1));
         list.add(new InsnNode(Opcodes.IRETURN));
-        return list;
+        return (list);
     }
+
 }

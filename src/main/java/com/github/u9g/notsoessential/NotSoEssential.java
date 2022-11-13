@@ -9,7 +9,6 @@ public class NotSoEssential {
     public static final String NAME = "@NAME@", VER = "@VER@", ID = "@ID@";
 
     @Mod.EventHandler
-    protected void onInitialization(FMLInitializationEvent event) {
-    }
+    protected void onInitialization(FMLInitializationEvent event) {}
 
 }
