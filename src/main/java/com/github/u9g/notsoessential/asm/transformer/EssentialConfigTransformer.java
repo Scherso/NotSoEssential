@@ -32,14 +32,28 @@ public class EssentialConfigTransformer implements ITransformer {
         }
     }
 
-    private InsnList functionReturnFalse() {
+    /**
+     * Return instruction list of false booleans with Instruction Node Opcodes.
+     * Opcode ICONST_0 = false
+     * Opcode IRETURN = return
+     *
+     * @return list of false booleans
+     */
+    public InsnList functionReturnFalse() {
         InsnList list = new InsnList();
         list.add(new InsnNode(Opcodes.ICONST_0));
         list.add(new InsnNode(Opcodes.IRETURN));
         return (list);
     }
 
-    private InsnList functionReturnTrue() {
+    /**
+     * Return instruction list of true booleans with Instruction Node Opcodes.
+     * Opcode ICONST_1 = true
+     * Opcode IRETURN = return
+     *
+     * @return list of true booleans
+     */
+    public InsnList functionReturnTrue() {
         InsnList list = new InsnList();
         list.add(new InsnNode(Opcodes.ICONST_1));
         list.add(new InsnNode(Opcodes.IRETURN));

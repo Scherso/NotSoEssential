@@ -45,34 +45,32 @@ dependencies {
     forge(libs.forge)
 }
 
-tasks {
-    processResources {
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        inputs.property("version", projectVersion)
-        inputs.property("mcversion", mcVersion)
-        inputs.property("name", projectName)
-        inputs.property("id", projectId)
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    inputs.property("version", projectVersion)
+    inputs.property("mcversion", mcVersion)
+    inputs.property("name", projectName)
+    inputs.property("id", projectId)
 
-        filesMatching("mcmod.info") {
-            expand(
-                "id" to projectId,
-                "name" to projectName,
-                "version" to projectVersion,
-                "mcversion" to mcVersion
-            )
-        }
+    filesMatching("mcmod.info") {
+        expand(
+            "id" to projectId,
+            "name" to projectName,
+            "version" to projectVersion,
+            "mcversion" to mcVersion
+        )
     }
+}
 
-    named<Jar>("jar") {
-        archiveBaseName.set(projectName)
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        manifest.attributes.run {
-            this["FMLCorePlugin"] = "com.github.u9g.notsoessential.plugin.FMLPlugin"
-            this["ModType"] = "FML"
-            this["FMLCorePluginContainsFMLMod"] = "true"
-            this["ForceLoadAsMod"] = "true"
-            this["TweakOrder"] = "0"
-        }
+tasks.named<Jar>("jar") {
+    archiveBaseName.set(projectName)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest.attributes.run {
+        this["FMLCorePlugin"] = "com.github.u9g.notsoessential.plugin.FMLPlugin"
+        this["ModType"] = "FML"
+        this["FMLCorePluginContainsFMLMod"] = "true"
+        this["ForceLoadAsMod"] = "true"
+        this["TweakOrder"] = "0"
     }
 }
 
