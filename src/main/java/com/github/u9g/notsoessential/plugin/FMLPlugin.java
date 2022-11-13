@@ -58,9 +58,8 @@ public class FMLPlugin implements IFMLLoadingPlugin {
 
     /**
      * Inject coremod data into this coremod This data includes:
-     * "mcLocation" : the location of the minecraft directory,
      * "coremodList" : the list of coremods
-     * "coremodLocation" : the file this coremod loaded from
+     * "isObfuscatedEnvironment" : whether the environment is obfuscated or not
      *
      * @param map list of string and object
      */

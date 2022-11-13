@@ -55,7 +55,7 @@ public class ClassTransformer implements IClassTransformer {
         /* If the list is empty,
          * The JVM will not attempt to run through the transformation process. */
         if (transformers.isEmpty())
-            return bytes;
+            return (bytes);
 
         /* Creating instances of classes. */
         ClassReader reader = new ClassReader(bytes);

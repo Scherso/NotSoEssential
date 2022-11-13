@@ -38,7 +38,7 @@ public class EssentialModelRendererTransformer implements ITransformer {
         InsnList list = new InsnList();
         list.add(new InsnNode(Opcodes.ICONST_0));
         list.add(new InsnNode(Opcodes.IRETURN));
-        return list;
+        return (list);
     }
 
 }
