@@ -1,7 +1,6 @@
 package com.github.u9g.notsoessential.asm;
 
-import com.github.u9g.notsoessential.asm.transformer.GuiOptionsEditorTransformer;
-import com.github.u9g.notsoessential.asm.transformer.PauseMenuDisplayTransformer;
+import com.github.u9g.notsoessential.asm.transformer.*;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.launchwrapper.IClassTransformer;
@@ -17,9 +16,9 @@ public class ClassTransformer implements IClassTransformer {
 
     /**
      * Create a JVM flag to dump transformed classes.
-     * Usable by adding `-DdebugBytecode=true` to JVM arguments.
+     * Usable by adding `-DNSE.debugBytecode=true` to JVM arguments.
      */
-    public static final boolean dumpBytecode = Boolean.parseBoolean(System.getProperty("debugBytecode", "false"));
+    public static final boolean dumpBytecode = Boolean.parseBoolean(System.getProperty("NSE.debugBytecode", "false"));
 
     /**
      * Create a multimap of transformers with Google's multimap library.
@@ -29,6 +28,7 @@ public class ClassTransformer implements IClassTransformer {
     public ClassTransformer() {
         registerTransformer(new GuiOptionsEditorTransformer());
         registerTransformer(new PauseMenuDisplayTransformer());
+        registerTransformer(new EssentialModelRendererTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
