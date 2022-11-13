@@ -26,13 +26,13 @@ public class EssentialModelRendererTransformer implements ITransformer {
                 while (iterator.hasNext()) {
                     final AbstractInsnNode next = iterator.next();
                     if (next instanceof VarInsnNode && next.getOpcode() == Opcodes.DSTORE)
-                        methodNode.instructions.insertBefore(next.getNext(), InstructionList());
+                        methodNode.instructions.insertBefore(next.getNext(), functionReturnFalse());
                 }
             }
         }
     }
 
-    private InsnList InstructionList() {
+    private InsnList functionReturnFalse() {
         InsnList list = new InsnList();
         list.add(new InsnNode(Opcodes.ICONST_0));
         list.add(new InsnNode(Opcodes.IRETURN));
