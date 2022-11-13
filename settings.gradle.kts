@@ -2,16 +2,19 @@ pluginManagement {
     repositories {
         mavenCentral()
         gradlePluginPortal()
-        // Architectury
+        maven("https://oss.sonatype.org/content/repositories/snapshots")
         maven("https://maven.architectury.dev/")
-        // Fabric
-        maven("https://maven.fabricmc.net/")
-        // Essential
-        maven("https://repo.essential.gg/repository/maven-public/")
-        // Forge
+        maven("https://maven.fabricmc.net")
         maven("https://maven.minecraftforge.net/")
-        // Jitpack
-        maven("https://jitpack.io/")
+        maven("https://repo.spongepowered.org/maven/")
+        maven("https://repo.sk1er.club/repository/maven-releases/")
+    }
+    resolutionStrategy {
+        eachPlugin {
+            when (requested.id.id) {
+                "gg.essential.loom" -> useModule("gg.essential:architectury-loom:${requested.version}")
+            }
+        }
     }
 }
 
