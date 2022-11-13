@@ -16,18 +16,20 @@ public class EssentialModelRendererTransformer implements ITransformer {
     @Override
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
-            if (methodNode.name.equals("render")) {
-                methodNode.localVariables.clear();
-                methodNode.instructions.clear();
-                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), new InsnNode(Opcodes.RETURN));
-            }
-            if (methodNode.name.equals("cosmeticsShouldRender")) {
-                final ListIterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
-                while (iterator.hasNext()) {
-                    final AbstractInsnNode next = iterator.next();
-                    if (next instanceof VarInsnNode && next.getOpcode() == Opcodes.DSTORE)
-                        methodNode.instructions.insertBefore(next.getNext(), functionReturnFalse());
-                }
+            switch (methodNode.name) {
+                case "cosmeticsShouldRender":
+                    final ListIterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
+                    while (iterator.hasNext()) {
+                        final AbstractInsnNode next = iterator.next();
+                        if (next instanceof VarInsnNode && next.getOpcode() == Opcodes.DSTORE)
+                            methodNode.instructions.insertBefore(next.getNext(), functionReturnFalse());
+                    }
+                    break;
+                case "render":
+                case "doRenderLayer":
+                    clearInstructions(methodNode);
+                    methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), new InsnNode(Opcodes.RETURN));
+                    break;
             }
         }
     }
