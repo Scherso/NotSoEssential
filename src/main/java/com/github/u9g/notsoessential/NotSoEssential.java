@@ -1,6 +1,5 @@
 package com.github.u9g.notsoessential;
 
-import com.github.u9g.notsoessential.command.NSECommand;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
@@ -11,7 +10,6 @@ public class NotSoEssential {
 
     @Mod.EventHandler
     protected void onInitialization(FMLInitializationEvent event) {
-        new NSECommand().register();
     }
 
 }

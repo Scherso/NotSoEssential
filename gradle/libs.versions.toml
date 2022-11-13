@@ -1,9 +1,9 @@
 [versions]
-essentialwrapper = "1.1.3"
-essential = "2487"
-mixin = "0.8.5-SNAPSHOT"
+minecraft = "1.8.9"
+mappings  = "22-1.8.9"
+forge     = "1.8.9-11.15.1.2318-1.8.9"
 
 [libraries]
-essentialwrapper = { module = "gg.essential:loader-launchwrapper", version.ref = "essentialwrapper"}
-essential = { module = "gg.essential:essential-1.8.9-forge", version.ref = "essential" }
-mixin = { module = "org.spongepowered:mixin", version.ref = "mixin" }
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+mappings  = { module = "de.oceanlabs.mcp:mcp_stable", version.ref = "mappings" }
+forge     = { module = "net.minecraftforge:forge", version.ref = "forge" }
