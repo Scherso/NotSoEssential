@@ -29,6 +29,7 @@ public class ClassTransformer implements IClassTransformer {
         registerTransformer(new GuiOptionsEditorTransformer());
         registerTransformer(new PauseMenuDisplayTransformer());
         registerTransformer(new EssentialModelRendererTransformer());
+        registerTransformer(new EssentialConfigTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
