@@ -1,11 +1,14 @@
 package com.github.u9g.notsoessential.asm.transformer;
 
 import com.github.u9g.notsoessential.asm.ITransformer;
-import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.MethodNode;
+
+import static org.objectweb.asm.Opcodes.ICONST_0;
+import static org.objectweb.asm.Opcodes.ICONST_1;
+import static org.objectweb.asm.Opcodes.IRETURN;
 
 public class EssentialConfigTransformer implements ITransformer {
 
@@ -40,9 +43,9 @@ public class EssentialConfigTransformer implements ITransformer {
      * @return list of false booleans
      */
     public InsnList functionReturnFalse() {
-        InsnList list = new InsnList();
-        list.add(new InsnNode(Opcodes.ICONST_0));
-        list.add(new InsnNode(Opcodes.IRETURN));
+        final InsnList list = new InsnList();
+        list.add(new InsnNode(ICONST_0));
+        list.add(new InsnNode(IRETURN));
         return (list);
     }
 
@@ -54,9 +57,9 @@ public class EssentialConfigTransformer implements ITransformer {
      * @return list of true booleans
      */
     public InsnList functionReturnTrue() {
-        InsnList list = new InsnList();
-        list.add(new InsnNode(Opcodes.ICONST_1));
-        list.add(new InsnNode(Opcodes.IRETURN));
+        final InsnList list = new InsnList();
+        list.add(new InsnNode(ICONST_1));
+        list.add(new InsnNode(IRETURN));
         return (list);
     }
 

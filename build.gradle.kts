@@ -29,6 +29,7 @@ loom {
         getByName("client") {
             property("debugBytecode", "true")
             property("asmhelper.verbose", "true")
+            property("fml.coreMods.load", "com.github.u9g.notsoessential.plugin.FMLPlugin")
             arg("-Dfml.coreMods.load", "com.github.u9g.notsoessential.plugin.FMLPlugin")
         }
     }
@@ -66,6 +67,7 @@ tasks.named<Jar>("jar") {
     archiveBaseName.set(projectName)
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest.attributes.run {
+        this["Manifest-Version"] = "1.0"
         this["FMLCorePlugin"] = "com.github.u9g.notsoessential.plugin.FMLPlugin"
         this["ModType"] = "FML"
         this["FMLCorePluginContainsFMLMod"] = "true"
