@@ -1,7 +1,6 @@
 package com.github.u9g.notsoessential.plugin;
 
 import com.github.u9g.notsoessential.asm.ClassTransformer;
-import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
