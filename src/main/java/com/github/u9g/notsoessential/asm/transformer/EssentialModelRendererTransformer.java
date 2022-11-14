@@ -42,7 +42,7 @@ public class EssentialModelRendererTransformer implements ITransformer {
      * @return list of false booleans
      */
     public InsnList functionReturnFalse() {
-        InsnList list = new InsnList();
+        final InsnList list = new InsnList();
         list.add(new InsnNode(Opcodes.ICONST_0));
         list.add(new InsnNode(Opcodes.IRETURN));
         return (list);

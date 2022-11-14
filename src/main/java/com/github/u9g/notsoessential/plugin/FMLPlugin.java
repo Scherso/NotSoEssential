@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 
-@IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
+@IFMLLoadingPlugin.Name("FMLPlugin")
 @IFMLLoadingPlugin.TransformerExclusions({"com.github.u9g.notsoessential.asm.transformer"})
 public class FMLPlugin implements IFMLLoadingPlugin {
 
