@@ -85,12 +85,10 @@ public interface ITransformer {
         methodNode.instructions.clear();
 
         /* Prevent procedure from clearing an already empty local variable. */
-        if (!methodNode.localVariables.isEmpty())
-            methodNode.localVariables.clear();
+        if (!methodNode.localVariables.isEmpty()) methodNode.localVariables.clear();
 
         /* Prevent procedure from clearing an already empty catch block. */
-        if (!methodNode.tryCatchBlocks.isEmpty())
-            methodNode.tryCatchBlocks.clear();
+        if (!methodNode.tryCatchBlocks.isEmpty()) methodNode.tryCatchBlocks.clear();
     }
 
 }
