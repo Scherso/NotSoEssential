@@ -1,6 +1,9 @@
 package com.github.u9g.notsoessential.asm;
 
-import com.github.u9g.notsoessential.asm.transformer.*;
+import com.github.u9g.notsoessential.asm.transformer.EssentialConfigTransformer;
+import com.github.u9g.notsoessential.asm.transformer.EssentialModelRendererTransformer;
+import com.github.u9g.notsoessential.asm.transformer.GuiOptionsEditorTransformer;
+import com.github.u9g.notsoessential.asm.transformer.PauseMenuDisplayTransformer;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.launchwrapper.IClassTransformer;
