@@ -24,11 +24,11 @@ public class EssentialConfigTransformer implements ITransformer
                 case "getShowEssentialIndicatorOnNametag":
                 case "getEssentialEnabled":
                 case "getEssentialFull":
-                    method.instructions.insertBefore(method.instructions.getFirst(), this.functionReturnFalse());
+                    method.instructions.insert(this.functionReturnFalse());
                     break;
                 case "getDisableCosmetics":
                 case "getDisableAllNotifications":
-                    method.instructions.insertBefore(method.instructions.getFirst(), this.functionReturnTrue());
+                    method.instructions.insert(this.functionReturnTrue());
                     break;
             }
         }
