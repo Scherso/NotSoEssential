@@ -7,18 +7,21 @@ import org.objectweb.asm.tree.MethodNode;
 
 import static org.objectweb.asm.Opcodes.RETURN;
 
-public class GuiOptionsEditorTransformer implements ITransformer {
+public class GuiOptionsEditorTransformer implements ITransformer
+{
 
     @Override
-    public String[] getClassName() {
-        return (new String[]{"gg.essential.gui.GuiOptionsEditor"});
+    public String getClassName()
+    {
+        return ("gg.essential.gui.GuiOptionsEditor");
     }
 
     @Override
-    public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods)
-            if (methodNode.name.equals("guiOptionsInit"))
-                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), new InsnNode(RETURN));
+    public void transform(ClassNode classNode, String name)
+    {
+        for (MethodNode method : classNode.methods)
+            if (method.name.equals("guiOptionsInit"))
+                method.instructions.insertBefore(method.instructions.getFirst(), new InsnNode(RETURN));
     }
 
 }
