@@ -34,7 +34,8 @@ public class ClassTransformer implements IClassTransformer
         registerTransformer(new EssentialConfigTransformer());
     }
 
-    private void registerTransformer(ITransformer transformer) {
+    private void registerTransformer(ITransformer transformer) 
+    {
         final List<ITransformer> LIST = this.TRANSFORMER_HASHMAP.get(transformer.getClassName());
         if (LIST == null)
         {
