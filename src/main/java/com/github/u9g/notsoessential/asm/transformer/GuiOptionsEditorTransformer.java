@@ -21,7 +21,7 @@ public class GuiOptionsEditorTransformer implements ITransformer
     {
         for (MethodNode method : classNode.methods)
             if (method.name.equals("guiOptionsInit"))
-                method.instructions.insertBefore(method.instructions.getFirst(), new InsnNode(RETURN));
+                method.instructions.insert(new InsnNode(RETURN));
     }
 
 }
