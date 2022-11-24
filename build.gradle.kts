@@ -8,11 +8,11 @@ plugins {
     id("net.kyori.blossom") version ("1.3.+")
 }
 
-val projectName: String by project
-val projectId: String by project
+val projectName:    String by project
+val projectId:      String by project
 val projectVersion: String by project
-val projectGroup: String by project
-val mcVersion: String = property("minecraft.version")?.toString() ?: throw IllegalStateException("minecraft.version is not set.")
+val projectGroup:   String by project
+val mcVersion:      String = property("minecraft.version")?.toString() ?: throw IllegalStateException("minecraft.version is not set.")
 
 version = projectVersion
 group = projectGroup
@@ -29,8 +29,8 @@ loom {
         getByName("client") {
             property("debugBytecode", "true")
             property("asmhelper.verbose", "true")
-            property("fml.coreMods.load", "com.github.u9g.notsoessential.plugin.FMLPlugin")
-            arg("-Dfml.coreMods.load", "com.github.u9g.notsoessential.plugin.FMLPlugin")
+            property("fml.coreMods.load", "com.github.u9g.notsoessential.FMLPlugin")
+            arg("-Dfml.coreMods.load", "com.github.u9g.notsoessential.FMLPlugin")
         }
     }
 
@@ -68,7 +68,7 @@ tasks.named<Jar>("jar") {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest.attributes.run {
         this["Manifest-Version"] = "1.0"
-        this["FMLCorePlugin"] = "com.github.u9g.notsoessential.plugin.FMLPlugin"
+        this["FMLCorePlugin"] = "com.github.u9g.notsoessential.FMLPlugin"
         this["ModType"] = "FML"
         this["FMLCorePluginContainsFMLMod"] = "true"
         this["ForceLoadAsMod"] = "true"
