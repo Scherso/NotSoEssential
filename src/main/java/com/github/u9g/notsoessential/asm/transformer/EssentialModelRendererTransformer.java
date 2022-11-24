@@ -15,6 +15,22 @@ public class EssentialModelRendererTransformer implements ITransformer
         return ("gg.essential.cosmetics.EssentialModelRenderer");
     }
 
+     /**
+      * <pre>
+      * This method is used to transform the Essential Model renderer class,
+      * finds and modifies methods that render cosmetics.
+      * Procedural methods are returned, most functions are returned false.
+      *
+      * FOR REFERENCE:
+      * {@link org.objectweb.asm.tree.VarInsnNode} is a node that represents a local variable instruction
+      * that loads or stores the value of a local variable.
+      * {@link DSTORE} stores a double into local variable
+      * </pre>
+      *
+      * @param classNode transformed class node
+      * @param name      transformed class name
+      * @see org.objectweb.asm.tree.VarInsnNode
+      */
     @Override
     public void transform(ClassNode classNode, String name)
     {
