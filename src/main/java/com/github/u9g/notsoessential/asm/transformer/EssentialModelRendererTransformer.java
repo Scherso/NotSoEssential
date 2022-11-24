@@ -41,6 +41,7 @@ public class EssentialModelRendererTransformer implements ITransformer
                 case "cosmeticsShouldRender":
                     for (final AbstractInsnNode INSN : method.instructions.toArray())
                     {
+                        /* See 'FOR REFERENCE' comment above for clarification. */
                         if (INSN instanceof VarInsnNode && INSN.getOpcode() == DSTORE)
                         {
                             method.instructions.insertBefore(INSN, this.functionReturnFalse());
