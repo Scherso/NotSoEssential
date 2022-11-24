@@ -10,7 +10,7 @@ public class EssentialModelRendererTransformer implements ITransformer
 {
 
     @Override
-    public String getClassName()
+    public final String getClassName()
     {
         return ("gg.essential.cosmetics.EssentialModelRenderer");
     }

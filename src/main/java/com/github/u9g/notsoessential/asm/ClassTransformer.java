@@ -22,7 +22,9 @@ public class ClassTransformer implements IClassTransformer
     public static final boolean DUMP_BYTECODE = Boolean.parseBoolean(System.getProperty("NSE.debugBytecode", "false"));
 
     /**
-     * Create a hashmap of transformers.
+     * List of transformers to be registered later,
+     *
+     * @see HashMap
      */
     private final HashMap<String, List<ITransformer>> TRANSFORMER_HASHMAP = new HashMap<>();
 

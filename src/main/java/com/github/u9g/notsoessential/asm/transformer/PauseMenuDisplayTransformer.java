@@ -11,7 +11,7 @@ public class PauseMenuDisplayTransformer implements ITransformer
 {
 
     @Override
-    public String getClassName()
+    public final String getClassName()
     {
         return ("gg.essential.handlers.PauseMenuDisplay");
     }

@@ -8,7 +8,7 @@ public class EssentialConfigTransformer implements ITransformer
 {
 
     @Override
-    public String getClassName()
+    public final String getClassName()
     {
         return ("gg.essential.config.EssentialConfig");
     }
