@@ -52,7 +52,7 @@ public class ClassTransformer implements IClassTransformer
     }
 
     @Override
-    public byte[] transform(String name, String transformedName, byte[] bytes)
+    public byte[] transform(final String name, final String transformedName, byte[] bytes)
     {
         if (bytes == null) return null;
         final List<ITransformer> TRANSFORMER_LIST = this.TRANSFORMER_HASHMAP.get(transformedName); if (TRANSFORMER_LIST == null) return (bytes);
