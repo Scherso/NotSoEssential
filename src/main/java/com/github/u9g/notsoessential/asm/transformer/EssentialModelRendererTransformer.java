@@ -35,7 +35,7 @@ public class EssentialModelRendererTransformer implements ITransformer
                 case "render":
                 case "doRenderLayer":
                     this.clearInstructions(method);
-                    method.instructions.insertBefore(method.instructions.getFirst(), new InsnNode(RETURN));
+                    method.instructions.insert(new InsnNode(RETURN));
                     break;
             }
         }
