@@ -22,14 +22,6 @@ public class OnboardingDataTransformer implements ITransformer
      *     in this case, functions in transformed classes returning the following:
      *     {@link org.objectweb.asm.Opcodes#ICONST_0} false
      *     {@link org.objectweb.asm.Opcodes#ICONST_1} true
-     *
-     *     Exert from hasDeniedTos()Z:
-     *     LINE A 44 ...
-     *     INVOKESTATIC java/lang/Boolean.valueOf(Z)Ljava/lang/Boolean;
-     *     INVOKESTATIC kotlin/jvm/internal/Intrinsics.areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
-     *     IRETURN
-     *     We're clearing these instructions, and replacing it with our own.
-     *     instruction, marked below.
      * </pre>
      *
      * @param classNode transformed class node
@@ -46,7 +38,7 @@ public class OnboardingDataTransformer implements ITransformer
                 case "hasAcceptedEssentialTOS":
                     /* Clearing method instructions, all instructions being local variables in this case.*/
                     method.localVariables.clear();
-                    /* Adding the following bytecode
+                    /* Inserting the following
                      * ICONST_0
                      * IRETURN
                      * this meaning return false. */
@@ -56,7 +48,7 @@ public class OnboardingDataTransformer implements ITransformer
                 case "hasDeniedEssentialTOS":
                     /* Clearing method instructions, all instructions being local variables in this case.*/
                     method.localVariables.clear();
-                    /* Adding the following bytecode
+                    /* Inserting the following:
                      * ICONST_1
                      * IRETURN
                      * this meaning return true. */
