@@ -55,7 +55,7 @@ public interface ITransformer
     /**
      * Clear method instructions
      *
-     * @param methodNode instance variable in parameters to clear lists
+     * @param methodNode instance variable of MethodNode
      */
     default void clearInstructions(MethodNode methodNode)
     {
