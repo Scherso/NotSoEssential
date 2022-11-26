@@ -1,11 +1,8 @@
 package com.github.u9g.notsoessential.asm.transformer;
 
 import com.github.u9g.notsoessential.asm.ITransformer;
-import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
-
-import static org.objectweb.asm.Opcodes.IRETURN;
 
 public class OnboardingDataTransformer implements ITransformer
 {
