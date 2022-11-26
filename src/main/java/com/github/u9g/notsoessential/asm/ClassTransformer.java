@@ -34,6 +34,7 @@ public class ClassTransformer implements IClassTransformer
         registerTransformer(new PauseMenuDisplayTransformer());
         registerTransformer(new EssentialModelRendererTransformer());
         registerTransformer(new EssentialConfigTransformer());
+        registerTransformer(new OnboardingDataTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) 
