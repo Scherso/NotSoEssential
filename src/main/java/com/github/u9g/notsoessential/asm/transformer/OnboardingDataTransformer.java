@@ -48,22 +48,28 @@ public class OnboardingDataTransformer implements ITransformer
                 case "hasAcceptedTos":
                 case "hasAcceptedEssentialTOS":
                     for (final AbstractInsnNode INSN : method.instructions.toArray())
+                    {
                         if (INSN.getOpcode() == IRETURN)
                         {
+                            method.localVariables.clear();
                             /* Replacing IRETURN instruction with our own. */
                             method.instructions.insertBefore(INSN, this.functionReturnFalse());
                             method.instructions.remove(INSN);
                         }
+                    }
                     break;
                 case "hasDeniedTos":
                 case "hasDeniedEssentialTOS":
                     for (final AbstractInsnNode INSN : method.instructions.toArray())
+                    {
                         if (INSN.getOpcode() == IRETURN)
                         {
+                            method.localVariables.clear();
                             /* Replacing IRETURN instruction with our own. */
                             method.instructions.insertBefore(INSN, this.functionReturnTrue());
                             method.instructions.remove(INSN);
                         }
+                    }
                     break;
             }
         }
