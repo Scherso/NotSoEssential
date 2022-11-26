@@ -24,7 +24,7 @@ public class EssentialModelRendererTransformer implements ITransformer
       * FOR REFERENCE:
       * {@link org.objectweb.asm.tree.VarInsnNode} is a node that represents a local variable instruction
       * that loads or stores the value of a local variable.
-      * {@link DSTORE} stores a double into local variable
+      * {@link org.objectweb.asm.Opcodes#DSTORE} stores a double into local variable
       * </pre>
       *
       * @param classNode transformed class node
