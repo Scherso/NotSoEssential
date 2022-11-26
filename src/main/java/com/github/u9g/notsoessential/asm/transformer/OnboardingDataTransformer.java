@@ -31,7 +31,7 @@ public class OnboardingDataTransformer implements ITransformer
      *     INVOKESTATIC java/lang/Boolean.valueOf(Z)Ljava/lang/Boolean;
      *     INVOKESTATIC kotlin/jvm/internal/Intrinsics.areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
      *     IRETURN
-     *     We're grabbing the instruction IRETURN, and replacing it with our own
+     *     We're clearing these instructions, and replacing it with our own.
      *     instruction, marked below.
      * </pre>
      *
@@ -47,29 +47,23 @@ public class OnboardingDataTransformer implements ITransformer
             {
                 case "hasAcceptedTos":
                 case "hasAcceptedEssentialTOS":
-                    for (final AbstractInsnNode INSN : method.instructions.toArray())
-                    {
-                        if (INSN.getOpcode() == IRETURN)
-                        {
-                            method.localVariables.clear();
-                            /* Replacing IRETURN instruction with our own. */
-                            method.instructions.insertBefore(INSN, this.functionReturnFalse());
-                            method.instructions.remove(INSN);
-                        }
-                    }
+                    /* Clearing method instructions, all instructions being local variables in this case.*/
+                    method.localVariables.clear();
+                    /* Adding the following bytecode
+                     * ICONST_0
+                     * IRETURN
+                     * this meaning return false. */
+                    method.instructions.insert(this.functionReturnFalse());
                     break;
                 case "hasDeniedTos":
                 case "hasDeniedEssentialTOS":
-                    for (final AbstractInsnNode INSN : method.instructions.toArray())
-                    {
-                        if (INSN.getOpcode() == IRETURN)
-                        {
-                            method.localVariables.clear();
-                            /* Replacing IRETURN instruction with our own. */
-                            method.instructions.insertBefore(INSN, this.functionReturnTrue());
-                            method.instructions.remove(INSN);
-                        }
-                    }
+                    /* Clearing method instructions, all instructions being local variables in this case.*/
+                    method.localVariables.clear();
+                    /* Adding the following bytecode
+                     * ICONST_1
+                     * IRETURN
+                     * this meaning return true. */
+                    method.instructions.insert(this.functionReturnTrue());
                     break;
             }
         }
