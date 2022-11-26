@@ -15,7 +15,6 @@ public class EssentialModelRendererTransformer implements ITransformer
         return ("gg.essential.cosmetics.EssentialModelRenderer");
     }
 
-
     /**
      * <pre>
      *     This method is used to transform the EssentialModelRenderer class.
