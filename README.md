@@ -1,6 +1,8 @@
+<br /> 
+
 <p align="center">
     
-  <img src="https://github.com/Scherso/NotSoEssential/blob/main/src/main/resources/notsoessential.png">
+  <img src="https://raw.githubusercontent.com/Scherso/NotSoEssential/test/.github/NOTSOESSENTIAL.svg">
 
 </p>
 
