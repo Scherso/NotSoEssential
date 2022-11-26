@@ -6,8 +6,6 @@
 
 </p>
 
-<br /> 
-
 <h3 align="center">
   
   "Keeps only what's Essential"
