@@ -1,7 +1,10 @@
 package com.github.u9g.notsoessential.asm.transformer;
 
 import com.github.u9g.notsoessential.asm.ITransformer;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.IntInsnNode;
+import org.objectweb.asm.tree.MethodNode;
 
 import static org.objectweb.asm.Opcodes.BIPUSH;
 
@@ -37,7 +40,8 @@ public class GuiOptionsEditorTransformer implements ITransformer
             {
                 for (final AbstractInsnNode INSN : method.instructions.toArray())
                 {
-                    if (INSN instanceof IntInsnNode && INSN.getOpcode() == BIPUSH && ((IntInsnNode) INSN).operand == 104)
+                    if (INSN instanceof IntInsnNode && INSN.getOpcode() == BIPUSH
+                            && ((IntInsnNode) INSN).operand == 104)
                     {
                         method.instructions.set(INSN, new IntInsnNode(BIPUSH, 0));
                     }

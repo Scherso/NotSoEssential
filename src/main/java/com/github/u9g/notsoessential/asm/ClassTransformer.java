@@ -38,7 +38,7 @@ public class ClassTransformer implements IClassTransformer
         registerTransformer(new OnlineIndicatorTransformer());
     }
 
-    private void registerTransformer(ITransformer transformer) 
+    private void registerTransformer(ITransformer transformer)
     {
         final List<ITransformer> LIST = this.TRANSFORMER_HASHMAP.get(transformer.getClassName());
         if (LIST == null)
@@ -56,8 +56,10 @@ public class ClassTransformer implements IClassTransformer
     @Override
     public byte[] transform(final String name, final String transformedName, byte[] bytes)
     {
-        if (bytes == null) return null;
-        final List<ITransformer> TRANSFORMER_LIST = this.TRANSFORMER_HASHMAP.get(transformedName); if (TRANSFORMER_LIST == null) return (bytes);
+        if (bytes == null) return (null);
+        final List<ITransformer> TRANSFORMER_LIST = this.TRANSFORMER_HASHMAP.get(transformedName);
+        if (TRANSFORMER_LIST == null) return (bytes);
+
         for (final ITransformer TRANSFORMER : TRANSFORMER_LIST)
         {
             final ClassNode   NODE   = new ClassNode();
@@ -88,18 +90,19 @@ public class ClassTransformer implements IClassTransformer
         {
             name = (name.contains("$")) ? name.replace('$', '.') + ".class" : name + ".class";
 
-            File bytecodeDirectory = new File(".bytecode.out");
-            if (!bytecodeDirectory.exists()) bytecodeDirectory.mkdirs();
+            final File BYTECODE_DIR = new File(".bytecode.out");
+            if (!BYTECODE_DIR.exists()) BYTECODE_DIR.mkdirs();
 
-            File bytecodeOutput = new File(bytecodeDirectory, name);
-            if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
+            final File BYTECODE_OUT = new File(BYTECODE_DIR, name);
+            if (!BYTECODE_OUT.exists()) BYTECODE_OUT.createNewFile();
 
-            FileOutputStream outputStream = new FileOutputStream(bytecodeOutput);
-            outputStream.write(writer.toByteArray());
-            outputStream.close();
+            FileOutputStream OUTPUT_STREAM = new FileOutputStream(BYTECODE_OUT);
+            OUTPUT_STREAM.write(writer.toByteArray());
+            OUTPUT_STREAM.close();
         }
         catch (Exception ex)
         {
+            System.out.println("Failed to dump bytecode for " + name);
             ex.printStackTrace();
         }
     }
