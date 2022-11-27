@@ -17,7 +17,7 @@ public class ClassTransformer implements IClassTransformer
 
     /**
      * Create a JVM flag to dump transformed classes.
-     * Usable by adding `-DNSE.debugBytecode=true` to JVM arguments.
+     * Usable by adding -DNSE.debugBytecode=true to JVM arguments.
      */
     public static final boolean DUMP_BYTECODE = Boolean.parseBoolean(System.getProperty("NSE.debugBytecode", "false"));
 
