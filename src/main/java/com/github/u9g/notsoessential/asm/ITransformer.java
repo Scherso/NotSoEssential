@@ -1,6 +1,9 @@
 package com.github.u9g.notsoessential.asm;
 
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.InsnList;
+import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.MethodNode;
 
 import static org.objectweb.asm.Opcodes.*;
 
@@ -63,9 +66,9 @@ public interface ITransformer
         methodNode.instructions.clear();
 
         /* Prevent procedure from clearing an already empty local variable. */
-        if (!methodNode.localVariables.isEmpty())     methodNode.localVariables.clear();
-        if (!methodNode.tryCatchBlocks.isEmpty())     methodNode.tryCatchBlocks.clear();
-        if (!methodNode.exceptions.isEmpty())         methodNode.exceptions.clear();
+        if (!methodNode.localVariables.isEmpty()) methodNode.localVariables.clear();
+        if (!methodNode.tryCatchBlocks.isEmpty()) methodNode.tryCatchBlocks.clear();
+        if (!methodNode.exceptions.isEmpty()) methodNode.exceptions.clear();
         if (!methodNode.visibleAnnotations.isEmpty()) methodNode.visibleAnnotations.clear();
     }
 
