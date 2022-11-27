@@ -10,9 +10,8 @@ import static org.objectweb.asm.Opcodes.RETURN;
 public class OnlineIndicatorTransformer implements ITransformer
 {
 
-
     @Override
-    public String getClassName()
+    public final String getClassName()
     {
         return ("gg.essential.handlers.OnlineIndicator");
     }
@@ -31,4 +30,5 @@ public class OnlineIndicatorTransformer implements ITransformer
             }
         }
     }
+
 }
