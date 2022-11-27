@@ -37,7 +37,7 @@ public class GuiOptionsEditorTransformer implements ITransformer
             {
                 for (final AbstractInsnNode INSN : method.instructions.toArray())
                 {
-                    if (INSN.getOpcode() == BIPUSH && ((IntInsnNode) INSN).operand == 104)
+                    if (INSN instanceof IntInsnNode && INSN.getOpcode() == BIPUSH && ((IntInsnNode) INSN).operand == 104)
                     {
                         method.instructions.set(INSN, new IntInsnNode(BIPUSH, 0));
                     }
