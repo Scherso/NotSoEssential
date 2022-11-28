@@ -96,9 +96,9 @@ public class ClassTransformer implements IClassTransformer
             final File BYTECODE_OUT = new File(BYTECODE_DIR, name);
             if (!BYTECODE_OUT.exists()) BYTECODE_OUT.createNewFile();
 
-            FileOutputStream OUTPUT_STREAM = new FileOutputStream(BYTECODE_OUT);
-            OUTPUT_STREAM.write(writer.toByteArray());
-            OUTPUT_STREAM.close();
+            FileOutputStream stream = new FileOutputStream(BYTECODE_OUT);
+            stream.write(writer.toByteArray());
+            stream.close();
         }
         catch (Exception ex)
         {
