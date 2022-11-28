@@ -36,6 +36,8 @@ public class ClassTransformer implements IClassTransformer
         registerTransformer(new EssentialConfigTransformer());
         registerTransformer(new OnboardingDataTransformer());
         registerTransformer(new OnlineIndicatorTransformer());
+        
+        return; 
     }
 
     private void registerTransformer(ITransformer transformer)
@@ -48,9 +50,9 @@ public class ClassTransformer implements IClassTransformer
             this.TRANSFORMER_HASHMAP.put(transformer.getClassName(), NEW_LIST);
         }
         else
-        {
             LIST.add(transformer);
-        }
+            
+        return;
     }
 
     @Override
@@ -105,6 +107,8 @@ public class ClassTransformer implements IClassTransformer
             System.out.println("Failed to dump bytecode for " + name);
             ex.printStackTrace();
         }
+        
+        return; 
     }
 
 }
