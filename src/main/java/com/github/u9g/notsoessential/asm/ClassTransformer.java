@@ -51,8 +51,6 @@ public class ClassTransformer implements IClassTransformer
         }
         else
             LIST.add(transformer);
-            
-        return;
     }
 
     @Override
@@ -107,8 +105,6 @@ public class ClassTransformer implements IClassTransformer
             System.out.println("Failed to dump bytecode for " + name);
             ex.printStackTrace();
         }
-        
-        return; 
     }
 
 }
