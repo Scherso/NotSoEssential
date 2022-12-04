@@ -2,7 +2,10 @@ package com.github.u9g.notsoessential.asm.transformer;
 
 import com.github.u9g.notsoessential.asm.ITransformer;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.MethodNode;
+
+import static org.objectweb.asm.Opcodes.*;
 
 public class OnboardingDataTransformer implements ITransformer
 {
@@ -39,20 +42,26 @@ public class OnboardingDataTransformer implements ITransformer
                     /* Clearing method instructions, all instructions being local variables in this case.*/
                     method.localVariables.clear();
                     /* Inserting the following
-                     * ICONST_0
-                     * IRETURN
+                     * ICONST_0 : false
+                     * IRETURN : return int value
                      * this meaning return false. */
-                    method.instructions.insert(this.functionReturnFalse());
+                    method.instructions.insert(this.createInsnList(
+                            new InsnNode(ICONST_0),
+                            new InsnNode(IRETURN)
+                    ));
                     break;
                 case "hasDeniedTos":
                 case "hasDeniedEssentialTOS":
                     /* Clearing method instructions, all instructions being local variables in this case.*/
                     method.localVariables.clear();
                     /* Inserting the following:
-                     * ICONST_1
-                     * IRETURN
+                     * ICONST_1 : true
+                     * IRETURN : return int value
                      * this meaning return true. */
-                    method.instructions.insert(this.functionReturnTrue());
+                    method.instructions.insert(this.createInsnList(
+                            new InsnNode(ICONST_1),
+                            new InsnNode(IRETURN)
+                    ));
                     break;
             }
         }
