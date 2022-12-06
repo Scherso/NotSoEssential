@@ -1,11 +1,9 @@
 package com.github.u9g.notsoessential.asm;
 
+import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnList;
-import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.MethodNode;
-
-import static org.objectweb.asm.Opcodes.*;
 
 public interface ITransformer
 {
@@ -26,36 +24,6 @@ public interface ITransformer
     void transform(ClassNode classNode, String name);
 
     /**
-     * Return instruction list of false booleans with Instruction Node Opcodes.
-     * Opcode ICONST_0 = false
-     * Opcode IRETURN = return
-     *
-     * @return list of false booleans
-     */
-    default InsnList functionReturnFalse()
-    {
-        final InsnList list = new InsnList();
-        list.add(new InsnNode(ICONST_0));
-        list.add(new InsnNode(IRETURN));
-        return (list);
-    }
-
-    /**
-     * Return instruction list of true booleans with Instruction Node Opcodes.
-     * Opcode ICONST_1 = true
-     * Opcode IRETURN = return
-     *
-     * @return list of true booleans
-     */
-    default InsnList functionReturnTrue()
-    {
-        final InsnList list = new InsnList();
-        list.add(new InsnNode(ICONST_1));
-        list.add(new InsnNode(IRETURN));
-        return (list);
-    }
-
-    /**
      * Clear method instructions
      *
      * @param methodNode instance variable of MethodNode
@@ -70,6 +38,22 @@ public interface ITransformer
         if (!methodNode.tryCatchBlocks.isEmpty())     methodNode.tryCatchBlocks.clear();
         if (!methodNode.exceptions.isEmpty())         methodNode.exceptions.clear();
         if (!methodNode.visibleAnnotations.isEmpty()) methodNode.visibleAnnotations.clear();
+    }
+
+    /**
+     * Creates a new {@link InsnList} to return in an instruction list function.
+     *
+     * @param instructions {@link AbstractInsnNode} instructions to add to the list
+     * @return {@link InsnList} with the instructions added
+     * @author Nilsen84 (nils) 2022
+     */
+    default InsnList createInsnList(AbstractInsnNode... instructions)
+    {
+        InsnList instructionList = new InsnList();
+        for (AbstractInsnNode instruction : instructions)
+            instructionList.add(instruction);
+
+        return (instructionList);
     }
 
 }
