@@ -3,8 +3,7 @@ package com.github.u9g.notsoessential.asm.transformer;
 import com.github.u9g.notsoessential.asm.ITransformer;
 import org.objectweb.asm.tree.*;
 
-import static org.objectweb.asm.Opcodes.DSTORE;
-import static org.objectweb.asm.Opcodes.RETURN;
+import static org.objectweb.asm.Opcodes.*;
 
 public class EssentialModelRendererTransformer implements ITransformer
 {
@@ -45,7 +44,10 @@ public class EssentialModelRendererTransformer implements ITransformer
                         /* See 'FOR REFERENCE' comment above for clarification. */
                         if (INSN instanceof VarInsnNode && INSN.getOpcode() == DSTORE)
                         {
-                            method.instructions.insertBefore(INSN, this.functionReturnFalse());
+                            method.instructions.insertBefore(INSN.getNext(), this.createInsnList(
+                                    new InsnNode(ICONST_0),
+                                    new InsnNode(IRETURN)
+                            ));
                             method.instructions.remove(INSN);
                         }
                     }
