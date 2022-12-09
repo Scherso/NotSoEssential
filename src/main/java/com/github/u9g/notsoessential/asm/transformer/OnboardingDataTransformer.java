@@ -39,7 +39,7 @@ public class OnboardingDataTransformer implements ITransformer
             {
                 case "hasAcceptedTos":
                 case "hasAcceptedEssentialTOS":
-                    /* Clearing method instructions, all instructions being local variables in this case.*/
+                    /* Clearing method instructions, all instructions being local variables in this case. */
                     method.localVariables.clear();
                     /* Inserting the following
                      * ICONST_0 - false
@@ -52,7 +52,7 @@ public class OnboardingDataTransformer implements ITransformer
                     break;
                 case "hasDeniedTos":
                 case "hasDeniedEssentialTOS":
-                    /* Clearing method instructions, all instructions being local variables in this case.*/
+                    /* Clearing method instructions, all instructions being local variables in this case. */
                     method.localVariables.clear();
                     /* Inserting the following:
                      * ICONST_1 - true
