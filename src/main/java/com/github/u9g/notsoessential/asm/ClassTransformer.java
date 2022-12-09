@@ -16,8 +16,7 @@ public class ClassTransformer implements IClassTransformer
 {
 
     /**
-     * Create a JVM flag to dump transformed classes.
-     * Usable by adding -DNSE.debugBytecode=true to JVM arguments.
+     * Create a JVM flag to dump transformed classes. Usable by adding -DNSE.debugBytecode=true to JVM arguments.
      */
     public static final boolean DUMP_BYTECODE = Boolean.parseBoolean(System.getProperty("NSE.debugBytecode", "false"));
 
@@ -46,8 +45,7 @@ public class ClassTransformer implements IClassTransformer
             final List<ITransformer> NEW_LIST = new ArrayList<>();
             NEW_LIST.add(transformer);
             this.TRANSFORMER_HASHMAP.put(transformer.getClassName(), NEW_LIST);
-        }
-        else
+        } else
             LIST.add(transformer);
     }
 
@@ -60,7 +58,7 @@ public class ClassTransformer implements IClassTransformer
 
         for (final ITransformer TRANSFORMER : TRANSFORMER_LIST)
         {
-            final ClassNode NODE = new ClassNode();
+            final ClassNode   NODE   = new ClassNode();
             final ClassReader READER = new ClassReader(bytes);
             READER.accept(NODE, ClassReader.EXPAND_FRAMES);
             TRANSFORMER.transform(NODE, transformedName);
@@ -69,8 +67,7 @@ public class ClassTransformer implements IClassTransformer
             try
             {
                 NODE.accept(WRITER);
-            }
-            catch (Throwable throwable)
+            } catch (Throwable throwable)
             {
                 throwable.printStackTrace();
             }
@@ -97,8 +94,7 @@ public class ClassTransformer implements IClassTransformer
             FileOutputStream stream = new FileOutputStream(BYTECODE_OUT);
             stream.write(writer.toByteArray());
             stream.close();
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             System.out.println("Failed to dump bytecode for " + name);
             ex.printStackTrace();

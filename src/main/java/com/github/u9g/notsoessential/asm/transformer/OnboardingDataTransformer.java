@@ -42,8 +42,8 @@ public class OnboardingDataTransformer implements ITransformer
                     /* Clearing method instructions, all instructions being local variables in this case.*/
                     method.localVariables.clear();
                     /* Inserting the following
-                     * ICONST_0 : false
-                     * IRETURN : return int value
+                     * ICONST_0 - false
+                     * IRETURN  - return int value
                      * this meaning return false. */
                     method.instructions.insert(this.createInsnList(
                             new InsnNode(ICONST_0),
@@ -55,8 +55,8 @@ public class OnboardingDataTransformer implements ITransformer
                     /* Clearing method instructions, all instructions being local variables in this case.*/
                     method.localVariables.clear();
                     /* Inserting the following:
-                     * ICONST_1 : true
-                     * IRETURN : return int value
+                     * ICONST_1 - true
+                     * IRETURN  - return int value
                      * this meaning return true. */
                     method.instructions.insert(this.createInsnList(
                             new InsnNode(ICONST_1),

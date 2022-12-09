@@ -16,6 +16,21 @@ public class EssentialConfigTransformer implements ITransformer
         return ("gg.essential.config.EssentialConfig");
     }
 
+    /**
+     * <pre>
+     *     This method is used to transform the EssentialConfig class.
+     *     Any configuration options local to this class will be transformed
+     *     according to their 'usefulness', or lack thereof.
+     *
+     *     FOR REFERENCE:
+     *     {@link org.objectweb.asm.Opcodes#ICONST_0} in this use; false.
+     *     {@link org.objectweb.asm.Opcodes#ICONST_1} in this use; true.
+     *     {@link org.objectweb.asm.Opcodes#IRETURN} return an int from a method,
+     * </pre>
+     *
+     * @param classNode transformed class node
+     * @param name      transformed class name
+     */
     @Override
     public void transform(ClassNode classNode, String name)
     {
@@ -28,6 +43,10 @@ public class EssentialConfigTransformer implements ITransformer
                 case "getEssentialEnabled":
                 case "getEssentialFull":
                     method.instructions.insert(this.createInsnList(
+                            /* Inserting the following
+                             * ICONST_0 - false
+                             * IRETURN  - return int value
+                             * this meaning return false. */
                             new InsnNode(ICONST_0),
                             new InsnNode(IRETURN)
                     ));
@@ -35,6 +54,10 @@ public class EssentialConfigTransformer implements ITransformer
                 case "getDisableCosmetics":
                 case "getDisableAllNotifications":
                     method.instructions.insert(this.createInsnList(
+                            /* Inserting the following:
+                             * ICONST_1 - true
+                             * IRETURN  - return int value
+                             * this meaning return true. */
                             new InsnNode(ICONST_1),
                             new InsnNode(IRETURN)
                     ));
