@@ -23,7 +23,8 @@ public class FMLPlugin implements IFMLLoadingPlugin
     }
 
     /**
-     * Return a class name that implements {@link net.minecraftforge.fml.common.ModContainer} for injection into the mod list.
+     * Return a class name that implements {@link net.minecraftforge.fml.common.ModContainer} for injection into the mod
+     * list.
      *
      * @return null
      */
@@ -35,7 +36,8 @@ public class FMLPlugin implements IFMLLoadingPlugin
     }
 
     /**
-     * Return the class name of an implementor of {@link net.minecraftforge.fml.relauncher.IFMLCallHook} that will be run, in the main thread.
+     * Return the class name of an implementor of {@link net.minecraftforge.fml.relauncher.IFMLCallHook} that will be
+     * run, in the main thread.
      *
      * @return null
      */
