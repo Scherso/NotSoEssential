@@ -29,13 +29,15 @@ public class ClassTransformer implements IClassTransformer
 
     public ClassTransformer()
     {
-        registerTransformer(new GuiOptionsEditorTransformer());
-        registerTransformer(new PauseMenuDisplayTransformer());
-        registerTransformer(new EssentialModelRendererTransformer());
+        registerTransformer(new CommandConfigTransformer());
+        registerTransformer(new ConnectionManagerTransformer());
+        registerTransformer(new ConnectionTransformer());
         registerTransformer(new EssentialConfigTransformer());
+        registerTransformer(new EssentialModelRendererTransformer());
+        registerTransformer(new GuiOptionsEditorTransformer());
         registerTransformer(new OnboardingDataTransformer());
         registerTransformer(new OnlineIndicatorTransformer());
-        registerTransformer(new CommandConfigTransformer());
+        registerTransformer(new PauseMenuDisplayTransformer());
     }
 
     private void registerTransformer(ITransformer transformer)

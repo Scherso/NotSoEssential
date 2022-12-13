@@ -19,6 +19,8 @@ public class OnboardingDataTransformer implements ITransformer
     /**
      * <pre>
      *     This method is used to transform the OnboardingData class.
+     *     Main function: Disable the ability to accept Essential's terms
+     *     of service, and in doing so, deny the terms of service as-well.
      *
      *     FOR REFERENCE:
      *     {@link org.objectweb.asm.Opcodes#IRETURN} return an int from a method,
@@ -39,8 +41,7 @@ public class OnboardingDataTransformer implements ITransformer
             {
                 case "hasAcceptedTos":
                 case "hasAcceptedEssentialTOS":
-                    /* Clearing method instructions, all instructions being local variables in this case. */
-                    method.localVariables.clear();
+                    this.clearInstructions(method);
                     /* Inserting the following
                      * ICONST_0 - false
                      * IRETURN  - return int value
@@ -52,8 +53,7 @@ public class OnboardingDataTransformer implements ITransformer
                     break;
                 case "hasDeniedTos":
                 case "hasDeniedEssentialTOS":
-                    /* Clearing method instructions, all instructions being local variables in this case. */
-                    method.localVariables.clear();
+                    this.clearInstructions(method);
                     /* Inserting the following:
                      * ICONST_1 - true
                      * IRETURN  - return int value

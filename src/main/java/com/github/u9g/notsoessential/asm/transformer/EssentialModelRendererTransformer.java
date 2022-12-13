@@ -20,6 +20,8 @@ public class EssentialModelRendererTransformer implements ITransformer
      *     Method finds and modifies methods that render cosmetics.
      *     Procedural methods are returned at head,
      *     Most functions are returned false.
+     *     The main function of this procedure is to cancel the rendering of
+     *     cosmetics.
      *
      *     FOR REFERENCE:
      *     {@link org.objectweb.asm.tree.VarInsnNode} is a node that represents a local variable instruction

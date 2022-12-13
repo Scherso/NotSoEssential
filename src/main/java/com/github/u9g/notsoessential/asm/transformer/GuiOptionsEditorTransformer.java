@@ -20,8 +20,8 @@ public class GuiOptionsEditorTransformer implements ITransformer
     /**
      * <pre>
      *     This method is used to transform the GuiOptionsEditor class.
-     *     Main function: Remove the 'Essential Settings...' Button in 
-     *     the main menu, in removing this button, it will be replaced 
+     *     This procedure removes the 'Essential Settings...' button in
+     *     the options menu, in removing this button, it will be replaced
      *     with the original; 'Snooper Settings...'.
      *
      *     FOR REFERENCE:

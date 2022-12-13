@@ -36,8 +36,6 @@ public interface ITransformer
         /* Prevent procedure from clearing an already empty local variable. */
         if (!methodNode.localVariables.isEmpty()) methodNode.localVariables.clear();
         if (!methodNode.tryCatchBlocks.isEmpty()) methodNode.tryCatchBlocks.clear();
-        if (!methodNode.exceptions.isEmpty()) methodNode.exceptions.clear();
-        if (!methodNode.visibleAnnotations.isEmpty()) methodNode.visibleAnnotations.clear();
     }
 
     /**
