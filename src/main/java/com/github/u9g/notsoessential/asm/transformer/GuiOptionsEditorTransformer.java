@@ -45,9 +45,7 @@ public class GuiOptionsEditorTransformer implements ITransformer
                 {
                     if (INSN instanceof IntInsnNode && INSN.getOpcode() == BIPUSH
                             && ((IntInsnNode) INSN).operand == 104)
-                    {
                         method.instructions.set(INSN, new IntInsnNode(BIPUSH, 0));
-                    }
                 }
             }
         }
