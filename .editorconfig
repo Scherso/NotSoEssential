@@ -6,6 +6,10 @@ insert_final_newline = true
 charset = utf-8
 trim_trailing_whitespace = true
 
+[*.{java,kts}]
+indent_style = tab
+tab_width = 4
+
 [*.{json,info}]
 indent_size = 4
 indent_style = space
