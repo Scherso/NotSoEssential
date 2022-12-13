@@ -6,6 +6,6 @@
 *.bat	text eol=crlf
 
 # Always binary
-*.jpg	-text
-*.png	-text
+*.jpg -text
+*.png -text
 *.svg -text
