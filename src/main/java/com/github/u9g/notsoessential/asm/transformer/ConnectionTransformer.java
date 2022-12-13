@@ -7,17 +7,20 @@ import org.objectweb.asm.tree.MethodNode;
 
 import static org.objectweb.asm.Opcodes.RETURN;
 
-public class OnlineIndicatorTransformer implements ITransformer
+public class ConnectionTransformer implements ITransformer
 {
 
     @Override
-    public final String getClassName()
+    public String getClassName()
     {
-        return ("gg.essential.handlers.OnlineIndicator");
+        return ("gg.essential.network.connectionmanager.Connection");
     }
 
     /**
-     * Remove the Essential indicators next to player names on name-tags, and in the tab list.
+     * Remove Essential's ability to make an external connection.
+     *
+     * <p> FOR REFERENCE:
+     * <p> "()V" will describe a method as void, meaning it's a procedure.
      *
      * @param classNode transformed class node
      * @param name      transformed class name
@@ -27,13 +30,10 @@ public class OnlineIndicatorTransformer implements ITransformer
     {
         for (MethodNode method : classNode.methods)
         {
-            switch (method.name)
+            if (method.desc.equals("()V"))
             {
-                case "drawTabIndicator":
-                case "drawNametagIndicator$5aa011b9":
-                    this.clearInstructions(method);
-                    method.instructions.insert(new InsnNode(RETURN));
-                    break;
+                this.clearInstructions(method);
+                method.instructions.insert(new InsnNode(RETURN));
             }
         }
     }

@@ -27,8 +27,7 @@ loom {
     silentMojangMappingsLicense()
     launchConfigs {
         getByName("client") {
-            property("debugBytecode", "true")
-            property("asmhelper.verbose", "true")
+            property("NSE.debugBytecode", "true")
             property("fml.coreMods.load", "com.github.u9g.notsoessential.FMLPlugin")
             arg("-Dfml.coreMods.load", "com.github.u9g.notsoessential.FMLPlugin")
         }

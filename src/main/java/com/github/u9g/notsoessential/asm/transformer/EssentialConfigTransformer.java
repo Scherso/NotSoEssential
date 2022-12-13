@@ -42,6 +42,7 @@ public class EssentialConfigTransformer implements ITransformer
                 case "getShowEssentialIndicatorOnNametag":
                 case "getEssentialEnabled":
                 case "getEssentialFull":
+                    this.clearInstructions(method);
                     method.instructions.insert(this.createInsnList(
                             /* Inserting the following
                              * ICONST_0 - false
@@ -53,6 +54,7 @@ public class EssentialConfigTransformer implements ITransformer
                     break;
                 case "getDisableCosmetics":
                 case "getDisableAllNotifications":
+                    this.clearInstructions(method);
                     method.instructions.insert(this.createInsnList(
                             /* Inserting the following:
                              * ICONST_1 - true
