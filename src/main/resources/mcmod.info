@@ -1,19 +1,19 @@
 [
-  {
-    "modid": "${id}",
-    "name": "${name}",
-    "description": "Keeps only what's Essential.",
-    "version": "${version}",
-    "mcversion": "${mcversion}",
-    "url": "https://github.com/Scherso/NotSoEssential",
-    "updateUrl": "",
-    "authorList": [
-      "U9G",
-      "Salmon"
-    ],
-    "credits": "",
-    "logoFile": "notsoessential.png",
-    "screenshots": [],
-    "dependencies": []
-  }
+    {
+        "modid": "${id}",
+        "name": "${name}",
+        "description": "Keeps only what's Essential.",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "https://github.com/Scherso/NotSoEssential",
+        "updateUrl": "",
+        "authorList": [
+            "U9G",
+            "Salmon"
+        ],
+        "credits": "",
+        "logoFile": "notsoessential.png",
+        "screenshots": [],
+        "dependencies": []
+    }
 ]

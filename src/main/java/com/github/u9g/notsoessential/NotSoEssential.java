@@ -6,6 +6,6 @@ import net.minecraftforge.fml.common.Mod;
 public class NotSoEssential
 {
 
-    public static final String NAME = "@NAME@", VER = "@VER@", ID = "@ID@";
+	public static final String NAME = "@NAME@", VER = "@VER@", ID = "@ID@";
 
 }
