@@ -11,44 +11,44 @@ import static org.objectweb.asm.Opcodes.BIPUSH;
 public class GuiOptionsEditorTransformer implements ITransformer
 {
 
-    @Override
-    public final String getClassName()
-    {
-        return ("gg.essential.gui.GuiOptionsEditor");
-    }
+	@Override
+	public final String getClassName()
+	{
+		return ("gg.essential.gui.GuiOptionsEditor");
+	}
 
-    /**
-     * <pre>
-     *     This method is used to transform the GuiOptionsEditor class.
-     *     This procedure removes the 'Essential Settings...' button in
-     *     the options menu, in removing this button, it will be replaced
-     *     with the original; 'Snooper Settings...'.
-     *
-     *     FOR REFERENCE:
-     *     {@link org.objectweb.asm.Opcodes#BIPUSH} pushes a byte onto the stack as an
-     *     integer value.
-     *     {@link IntInsnNode#IntInsnNode(int, int)} creates a new {@link IntInsnNode}
-     *     with the specified opcode and operand.
-     * </pre>
-     *
-     * @param classNode transformed class node
-     * @param name      transformed class name
-     */
-    @Override
-    public void transform(ClassNode classNode, String name)
-    {
-        for (MethodNode method : classNode.methods)
-        {
-            if (method.name.equals("guiOptionsInit"))
-            {
-                for (final AbstractInsnNode INSN : method.instructions.toArray())
-                {
-                    if (INSN instanceof IntInsnNode && INSN.getOpcode() == BIPUSH
-                            && ((IntInsnNode) INSN).operand == 104)
-                        method.instructions.set(INSN, new IntInsnNode(BIPUSH, 0));
-                }
-            }
-        }
-    }
+	/**
+	 * <pre>
+	 *     This method is used to transform the GuiOptionsEditor class.
+	 *     This procedure removes the 'Essential Settings...' button in
+	 *     the options menu, in removing this button, it will be replaced
+	 *     with the original; 'Snooper Settings...'.
+	 *
+	 *     FOR REFERENCE:
+	 *     {@link org.objectweb.asm.Opcodes#BIPUSH} pushes a byte onto the stack as an
+	 *     integer value.
+	 *     {@link IntInsnNode#IntInsnNode(int, int)} creates a new {@link IntInsnNode}
+	 *     with the specified opcode and operand.
+	 * </pre>
+	 *
+	 * @param classNode transformed class node
+	 * @param name      transformed class name
+	 */
+	@Override
+	public void transform(ClassNode classNode, String name)
+	{
+		for (MethodNode method : classNode.methods)
+		{
+			if (method.name.equals("guiOptionsInit"))
+			{
+				for (final AbstractInsnNode INSN : method.instructions.toArray())
+				{
+					if (INSN instanceof IntInsnNode && INSN.getOpcode() == BIPUSH
+							&& ((IntInsnNode) INSN).operand == 104)
+						method.instructions.set(INSN, new IntInsnNode(BIPUSH, 0));
+				}
+			}
+		}
+	}
 
 }
