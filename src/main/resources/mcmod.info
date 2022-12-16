@@ -2,7 +2,6 @@
     {
         "modid": "${id}",
         "name": "${name}",
-        "description": "Keeps only what's Essential.",
         "version": "${version}",
         "mcversion": "${mcversion}",
         "url": "https://github.com/Scherso/NotSoEssential",
