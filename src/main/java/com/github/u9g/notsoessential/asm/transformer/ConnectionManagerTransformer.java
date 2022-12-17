@@ -41,7 +41,7 @@ public class ConnectionManagerTransformer implements ITransformer
 	{
 		for (MethodNode method : classNode.methods)
 		{
-			if (method.desc.equals("()V"))
+			if (method.desc.endsWith("()V"))
 			{
 				/* Taking every procedure,
 				 * clearing its instruction and
@@ -51,7 +51,7 @@ public class ConnectionManagerTransformer implements ITransformer
 				method.instructions.insert(new InsnNode(RETURN));
 			}
 
-			if (method.desc.equals("()Z"))
+			if (method.desc.endsWith("()Z"))
 			{
 				/* Taking every single function
 				 * and, clearing its instructions,

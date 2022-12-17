@@ -30,7 +30,7 @@ public class ConnectionTransformer implements ITransformer
 	{
 		for (MethodNode method : classNode.methods)
 		{
-			if (method.desc.equals("()V"))
+			if (method.desc.endsWith("()V"))
 			{
 				this.clearInstructions(method);
 				method.instructions.insert(new InsnNode(RETURN));
