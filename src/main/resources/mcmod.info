@@ -1,7 +1,6 @@
 [
     {
         "modid": "${id}",
-        "name": "${name}",
         "version": "${version}",
         "mcversion": "${mcversion}",
         "url": "https://github.com/Scherso/NotSoEssential",

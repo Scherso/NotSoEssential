@@ -49,7 +49,6 @@ tasks.processResources {
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 	inputs.property("version", projectVersion)
 	inputs.property("mcversion", mcVersion)
-	inputs.property("name", projectName)
 	inputs.property("id", projectId)
 
 	filesMatching("mcmod.info") {
