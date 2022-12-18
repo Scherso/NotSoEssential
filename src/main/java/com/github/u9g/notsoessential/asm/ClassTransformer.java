@@ -52,14 +52,6 @@ public class ClassTransformer implements IClassTransformer
 			LIST.add(transformer);
 	}
 
-
-	/**
-	 * {@link ClassWriter#COMPUTE_MAXS}
-	 * @param name
-	 * @param transformedName
-	 * @param bytes
-	 * @return
-	 */
 	@Override
 	public byte[] transform(final String name, final String transformedName, byte[] bytes)
 	{
