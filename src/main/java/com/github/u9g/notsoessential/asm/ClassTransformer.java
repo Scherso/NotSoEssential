@@ -52,6 +52,14 @@ public class ClassTransformer implements IClassTransformer
 			LIST.add(transformer);
 	}
 
+
+	/**
+	 * {@link ClassWriter#COMPUTE_MAXS}
+	 * @param name
+	 * @param transformedName
+	 * @param bytes
+	 * @return
+	 */
 	@Override
 	public byte[] transform(final String name, final String transformedName, byte[] bytes)
 	{
@@ -59,23 +67,19 @@ public class ClassTransformer implements IClassTransformer
 		final List<ITransformer> TRANSFORMER_LIST = this.TRANSFORMER_HASHMAP.get(transformedName);
 		if (TRANSFORMER_LIST == null) return (bytes);
 
-		for (final ITransformer TRANSFORMER : TRANSFORMER_LIST)
+		for (int i = TRANSFORMER_LIST.size() - 1; i > -1; i--)
 		{
-			final ClassNode   NODE   = new ClassNode();
-			final ClassReader READER = new ClassReader(bytes);
+			final ITransformer TRANSFORMER = TRANSFORMER_LIST.get(i);
+			final ClassNode    NODE        = new ClassNode();
+			final ClassReader  READER      = new ClassReader(bytes);
 			READER.accept(NODE, ClassReader.EXPAND_FRAMES);
 			TRANSFORMER.transform(NODE, transformedName);
-			final ClassWriter WRITER = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
+			final ClassWriter WRITER = new ClassWriter(READER, 0);
+			NODE.accept(WRITER);
 
-			try
-			{
-				NODE.accept(WRITER);
-			} catch (Throwable throwable)
-			{
-				throwable.printStackTrace();
-			}
+			if (DUMP_BYTECODE)
+				this.dumpBytes(transformedName, WRITER);
 
-			if (DUMP_BYTECODE) this.dumpBytes(transformedName, WRITER);
 			bytes = WRITER.toByteArray();
 		}
 		return (bytes);
