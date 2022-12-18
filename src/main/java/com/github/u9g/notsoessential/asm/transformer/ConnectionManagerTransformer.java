@@ -41,7 +41,10 @@ public class ConnectionManagerTransformer implements ITransformer
 	{
 		for (MethodNode method : classNode.methods)
 		{
-			if (method.desc.endsWith("V"))
+			/* !method.name.equals("<init>") condition
+			 * ensures that the constructor's instructions
+			 * are not cleared, as it will cause a crash. */
+			if (method.desc.endsWith("V") && !method.name.equals("<init>"))
 			{
 				/* Taking every procedure,
 				 * clearing its instruction and

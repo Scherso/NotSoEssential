@@ -5,7 +5,7 @@ import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
-import static org.objectweb.asm.Opcodes.RETURN;
+import static org.objectweb.asm.Opcodes.*;
 
 public class ConnectionTransformer implements ITransformer
 {
@@ -30,10 +30,26 @@ public class ConnectionTransformer implements ITransformer
 	{
 		for (MethodNode method : classNode.methods)
 		{
-			if (method.desc.endsWith("()V"))
+			if (method.desc.endsWith("V"))
 			{
+				/* Taking every procedure,
+				 * clearing its instruction and
+				 * returning it at the head of
+				 * the method. */
 				this.clearInstructions(method);
 				method.instructions.insert(new InsnNode(RETURN));
+			}
+
+			if (method.desc.contains("L"))
+			{
+				/* Taking every function which returns
+				 * an Object, clearing its instructions,
+				 * and returning 'null' at the head. */
+				this.clearInstructions(method);
+				method.instructions.insert(this.createInsnList(
+						new InsnNode(ACONST_NULL),
+						new InsnNode(ARETURN)
+				));
 			}
 		}
 	}
