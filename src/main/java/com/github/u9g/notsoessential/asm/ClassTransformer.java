@@ -64,7 +64,7 @@ public class ClassTransformer implements IClassTransformer
 			final ITransformer TRANSFORMER = TRANSFORMER_LIST.get(i);
 			final ClassNode    NODE        = new ClassNode();
 			final ClassReader  READER      = new ClassReader(bytes);
-			READER.accept(NODE, ClassReader.EXPAND_FRAMES);
+			READER.accept(NODE, 0);
 			TRANSFORMER.transform(NODE, transformedName);
 			final ClassWriter WRITER = new ClassWriter(READER, 0);
 			NODE.accept(WRITER);
