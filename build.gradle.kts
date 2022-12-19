@@ -54,7 +54,6 @@ tasks.processResources {
 	filesMatching("mcmod.info") {
 		expand(
 			"id" to projectId,
-			"name" to projectName,
 			"version" to projectVersion,
 			"mcversion" to mcVersion
 		)
