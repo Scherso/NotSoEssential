@@ -2,6 +2,7 @@ package com.github.u9g.notsoessential.asm;
 
 import com.github.u9g.notsoessential.asm.transformer.*;
 import net.minecraft.launchwrapper.IClassTransformer;
+import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
@@ -23,6 +24,7 @@ public class ClassTransformer implements IClassTransformer
 	/**
 	 * List of transformers to be registered later,
 	 *
+	 * @associates com.github.u9g.notsoessential.asm.ITransformer
 	 * @see HashMap
 	 */
 	private final HashMap<String, List<ITransformer>> TRANSFORMER_HASHMAP = new HashMap<>();
@@ -40,7 +42,7 @@ public class ClassTransformer implements IClassTransformer
 		registerTransformer(new PauseMenuDisplayTransformer());
 	}
 
-	private void registerTransformer(ITransformer transformer)
+	private void registerTransformer(@NotNull ITransformer transformer)
 	{
 		final List<ITransformer> LIST = this.TRANSFORMER_HASHMAP.get(transformer.getClassName());
 		if (LIST == null)
