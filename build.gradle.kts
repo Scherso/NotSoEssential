@@ -12,7 +12,9 @@ val projectName:    String by project
 val projectId:      String by project
 val projectVersion: String by project
 val projectGroup:   String by project
-val mcVersion:      String = property("minecraft.version")?.toString() ?: throw IllegalStateException("minecraft.version is not set.")
+val mcVersion:      String =
+	property("minecraft.version")?.toString()
+		?: throw IllegalStateException("minecraft.version is not set.")
 
 version = projectVersion
 group = projectGroup
@@ -28,7 +30,8 @@ loom {
 	launchConfigs {
 		getByName("client") {
 			property("NSE.debugBytecode", "true")
-			property("fml.coreMods.load", "com.github.u9g.notsoessential.FMLPlugin")
+			/* Ensuring that the forge mod is loaded as a core-mod.
+			 * @see com.github.u9g.notsoessential.FMLPlugin */
 			arg("-Dfml.coreMods.load", "com.github.u9g.notsoessential.FMLPlugin")
 		}
 	}
