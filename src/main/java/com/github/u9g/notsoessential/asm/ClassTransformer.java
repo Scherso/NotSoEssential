@@ -61,11 +61,11 @@ public class ClassTransformer implements IClassTransformer
 		final List<ITransformer> TRANSFORMER_LIST = this.TRANSFORMER_HASHMAP.get(transformedName);
 		if (TRANSFORMER_LIST == null) return (bytes);
 
-		for (int i = TRANSFORMER_LIST.size() - 1; i > -1; i--)
-		{
-			final ITransformer TRANSFORMER = TRANSFORMER_LIST.get(i);
-			final ClassNode    NODE        = new ClassNode();
-			final ClassReader  READER      = new ClassReader(bytes);
+		for (int i = TRANSFORMER_LIST.size() - 1; i > -1; i--)          /* For statement here matches a for-each, ex:          */
+		{                                                               /* for (ITransformer transformer : TRANSFORMER_LIST) { */
+			final ITransformer TRANSFORMER = TRANSFORMER_LIST.get(i);   /*     transformer.transform(node, transformedName);   */
+			final ClassNode    NODE        = new ClassNode();           /* }                                                   */
+			final ClassReader  READER      = new ClassReader(bytes);    /* Statement is written differently for performance.   */
 			READER.accept(NODE, 0);
 			TRANSFORMER.transform(NODE, transformedName);
 			final ClassWriter WRITER = new ClassWriter(READER, 0);
