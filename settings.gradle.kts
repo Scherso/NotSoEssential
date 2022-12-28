@@ -18,3 +18,5 @@ pluginManagement {
 
 val projectName: String by settings
 rootProject.name = projectName
+include("NotSoEssential-Forge")
+include("NotSoEssential-Fabric")
