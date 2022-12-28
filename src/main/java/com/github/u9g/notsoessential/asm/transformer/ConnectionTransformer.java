@@ -5,7 +5,7 @@ import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.MethodNode;
 
-import static org.objectweb.asm.Opcodes.*;
+import static org.objectweb.asm.Opcodes.RETURN;
 
 public class ConnectionTransformer implements ITransformer
 {
@@ -17,10 +17,7 @@ public class ConnectionTransformer implements ITransformer
 	}
 
 	/**
-	 * Remove Essential's ability to make an external connection.
-	 *
-	 * <p> FOR REFERENCE:
-	 * <p> "()V" will describe a method as void, meaning it's a procedure.
+	 * Attempting to remove Essential's ability to make an external connection.
 	 *
 	 * @param classNode transformed class node
 	 * @param name      transformed class name
@@ -30,26 +27,16 @@ public class ConnectionTransformer implements ITransformer
 	{
 		for (MethodNode method : classNode.methods)
 		{
-			if (method.desc.endsWith("V"))
+			switch (method.name)
 			{
-				/* Taking every procedure,
-				 * clearing its instruction and
-				 * returning it at the head of
-				 * the method. */
-				this.clearInstructions(method);
-				method.instructions.insert(new InsnNode(RETURN));
-			}
-
-			if (method.desc.contains("L"))
-			{
-				/* Taking every function which returns
-				 * an Object, clearing its instructions,
-				 * and returning 'null' at the head. */
-				this.clearInstructions(method);
-				method.instructions.insert(this.createInsnList(
-						new InsnNode(ACONST_NULL),
-						new InsnNode(ARETURN)
-				));
+				case "send":
+				case "attemptConnect":
+				case "attemptConnect$1385ff":
+				case "doAttemptConnect":
+				case "retryConnectWithBackoff":
+					this.clearInstructions(method);
+					method.instructions.insert(new InsnNode(RETURN));
+					break;
 			}
 		}
 	}
