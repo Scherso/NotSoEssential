@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
-@Mixin(targets = "gg.essential.gui.GuiOptionsEditor")
+@Mixin(targets = "gg.essential.gui.GuiOptionsEditor", remap = false)
 public class GuiOptionsEditorMixin
 {
 
