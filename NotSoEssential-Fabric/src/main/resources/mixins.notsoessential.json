@@ -1,0 +1,10 @@
+{
+    "required": true,
+    "package": "com.github.u9g.notsoessential.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "mixins": [
+        "GuiOptionsEditorMixin"
+    ],
+    "client": [
+    ]
+}

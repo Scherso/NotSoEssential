@@ -1,0 +1,35 @@
+{
+    "schemaVersion": 1,
+    "id": "${id}",
+    "version": "${version}",
+    "name": "${name}",
+    "description": "Keeps only what's Essential.",
+    "authors": [
+        "U9G",
+        "Scherso"
+    ],
+    "contact": {
+        "homepage": "https://modrinth.com/mod/notsoessential",
+        "sources": "https://github.com/Scherso/NotSoEssential"
+    },
+    "license": "AGPL-3.0",
+    "icon": "assets/notsoessential.png",
+    "environment": "client",
+    "entrypoints": {
+        "main": [
+            "com.github.u9g.notsoessential.NotSoEssential"
+        ]
+    },
+    "mixins": [
+        "mixins.notsoessential.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.14.11",
+        "fabric-api": "*",
+        "minecraft": "${mcversion}",
+        "java": ">=17"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
+}
