@@ -8,12 +8,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
 @SuppressWarnings("UnresolvedMixinReference")
-@Mixin(targets = "gg.essential.gui.GuiOptionsEditor", remap = false)
-public class GuiOptionsEditorMixin
+@Mixin(targets = "gg.essential.handlers.PauseMenuDisplay", remap = false)
+public class PauseMenuDisplayMixin
 {
 
-	@Inject(method = "guiOptionsInit(Lgg/essential/event/gui/InitGuiEvent;)V", at = @At("HEAD"), cancellable = true, remap = false)
-	private void nse$guiOptionsInit(final CallbackInfo ci)
+	@Inject(method = "init(Lnet/minecraft/class_437;)V", at = @At("HEAD"), cancellable = true, remap = false)
+	private void nse$init(final CallbackInfo ci)
 	{
 		ci.cancel();
 	}

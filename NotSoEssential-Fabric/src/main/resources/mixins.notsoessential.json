@@ -3,8 +3,14 @@
     "package": "com.github.u9g.notsoessential.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+        "CommandConfigMixin",
+        "ConnectionManagerTransformer",
+        "EssentialConfigMixin",
+        "EssentialModelRendererMixin",
         "GuiOptionsEditorMixin",
-        "OnboardingDataMixin"
+        "OnboardingDataMixin",
+        "OnlineIndicatorMixin",
+        "PauseMenuDisplayMixin"
     ],
     "client": [
     ]
