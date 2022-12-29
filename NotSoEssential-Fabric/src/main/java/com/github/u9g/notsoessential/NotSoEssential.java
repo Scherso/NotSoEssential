@@ -8,7 +8,7 @@ public class NotSoEssential implements ModInitializer
 	@Override
 	public void onInitialize()
 	{
-		System.out.println("Hello, World!");
+//		System.out.println("Hello, World!");
 	}
 
 }
