@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Pseudo
 @SuppressWarnings("UnresolvedMixinReference")
 @Mixin(targets = "gg.essential.network.connectionmanager.ConnectionManager", remap = false)
-public class ConnectionManagerTransformer
+public class ConnectionManagerMixin
 {
 
 	@Inject(method = {
