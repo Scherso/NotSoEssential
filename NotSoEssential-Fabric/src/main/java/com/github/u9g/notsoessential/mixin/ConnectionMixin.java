@@ -8,12 +8,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
 @SuppressWarnings("UnresolvedMixinReference")
-@Mixin(targets = "gg.essential.gui.GuiOptionsEditor", remap = false)
-public class GuiOptionsEditorMixin
+@Mixin(targets = "gg.essential.network.connectionmanager.Connection", remap = false)
+public class ConnectionMixin
 {
 
-	@Inject(method = "guiOptionsInit(Lgg/essential/event/gui/InitGuiEvent;)V", at = @At("HEAD"), cancellable = true, remap = false)
-	private void nse$guiOptionsInit(final CallbackInfo ci)
+	@Inject(method = {
+			"send",
+			"attemptConnect",
+			"attemptConnect$1385ff",
+			"doAttemptConnect",
+			"retryConnectWithBackoff"
+	}, at = @At("HEAD"), cancellable = true, remap = false)
+	private void nse$overrideConnection(final CallbackInfo ci)
 	{
 		ci.cancel();
 	}
