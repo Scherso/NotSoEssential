@@ -12,7 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GuiOptionsEditorMixin
 {
 
-	@Inject(method = "guiOptionsInit(Lgg/essential/event/gui/InitGuiEvent;)V", at = @At("HEAD"), cancellable = true, remap = false)
+	@Inject(method = {
+			"guiOptionsInit(Lgg/essential/event/gui/InitGuiEvent;)V"
+	}, at = @At("HEAD"), cancellable = true, remap = false)
 	private void nse$guiOptionsInit(final CallbackInfo ci)
 	{
 		ci.cancel();

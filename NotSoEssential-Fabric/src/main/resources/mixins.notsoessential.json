@@ -5,6 +5,7 @@
     "mixins": [
         "CommandConfigMixin",
         "ConnectionManagerMixin",
+        "ConnectionMixin",
         "EssentialConfigMixin",
         "EssentialModelRendererMixin",
         "GuiOptionsEditorMixin",
