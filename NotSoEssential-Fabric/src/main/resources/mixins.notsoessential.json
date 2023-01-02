@@ -8,6 +8,7 @@
         "ConnectionMixin",
         "EssentialConfigMixin",
         "EssentialModelRendererMixin",
+        "EssentialMultiplayerGuiMixin",
         "GuiOptionsEditorMixin",
         "OnboardingDataMixin",
         "OnlineIndicatorMixin",
