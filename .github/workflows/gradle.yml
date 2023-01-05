@@ -1,12 +1,7 @@
-name: Build
+name: Build With Gradle
 
 on:
   push:
-    branches: '*'
-    paths-ignore:
-      - 'README.md'
-      - 'LICENSE'
-      - '.gitignore'
   pull_request:
     branches: '*'
     paths-ignore:
@@ -14,16 +9,22 @@ on:
       - 'LICENSE'
       - '.gitignore'
   workflow_dispatch:
-
+  
 jobs:
   build:
+    name: Build with Gradle
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 17
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Set-up JDK 18
         uses: actions/setup-java@v2
         with:
-          distribution: "temurin"
-          java-version: "17"
-      - name: Build
-        run: chmod +x ./gradlew ; ./gradlew build --no-daemon
+          java-version: 18
+          distribution: temurin
+      - name: Change Gradlew Script File Modifier
+        run: chmod +x ./gradlew
+      - name: Build With Gradle
+        run: ./gradlew build --no-daemon
