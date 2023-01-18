@@ -14,10 +14,10 @@ public class ConnectionManagerMixin
 {
 
 	@Inject(method = {
-			"onOpenAsync(Lgg/essential/connectionmanager/common/packet/connection/ClientConnectionLoginPacket;)V",
-			"respond(Lgg/essential/connectionmanager/common/packet/Packet;Lgg/essential/connectionmanager/common/packet/Packet;)V",
-			"send", /* No descriptor in order to match all methods. */
-			"close" /* No descriptor in order to match all methods. */
+		"onOpenAsync(Lgg/essential/connectionmanager/common/packet/connection/ClientConnectionLoginPacket;)V",
+		"respond(Lgg/essential/connectionmanager/common/packet/Packet;Lgg/essential/connectionmanager/common/packet/Packet;)V",
+		"send", /* No descriptor in order to match all methods. */
+		"close" /* No descriptor in order to match all methods. */
 	}, at = @At("HEAD"), cancellable = true, remap = false)
 	private void nse$overrideConnectionManager(final CallbackInfo ci)
 	{
@@ -25,8 +25,8 @@ public class ConnectionManagerMixin
 	}
 
 	@Inject(method = {
-			"isOpen()Z",
-			"isAuthenticated()Z",
+		"isOpen()Z",
+		"isAuthenticated()Z",
 	}, at = @At("HEAD"), cancellable = true, remap = false)
 	private void nse$overrideConnectionManager(final CallbackInfoReturnable<Boolean> clr)
 	{

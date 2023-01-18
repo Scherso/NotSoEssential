@@ -11,14 +11,14 @@ java {
 	}
 }
 
-val projectName:    String by project
-val projectId:      String by project
+val projectName: String by project
+val projectId: String by project
 val projectVersion: String by project
-val projectGroup:   String by project
-val yarnMappings:   String = property("yarn_mappings").toString()
-val loaderVersion:  String = property("loader_version").toString()
-val fabricVersion:  String = property("fabric_version").toString()
-val mcVersion:      String = property("minecraft.version").toString()
+val projectGroup: String by project
+val yarnMappings: String = property("yarn_mappings").toString()
+val loaderVersion: String = property("loader_version").toString()
+val fabricVersion: String = property("fabric_version").toString()
+val mcVersion: String = property("minecraft.version").toString()
 
 version = projectVersion
 group = projectGroup

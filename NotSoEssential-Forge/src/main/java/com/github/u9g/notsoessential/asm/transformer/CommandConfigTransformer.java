@@ -31,9 +31,9 @@ public class CommandConfigTransformer implements ITransformer
 			{
 				this.clearInstructions(method);
 				method.instructions.insert(this.createInsnList(
-						new LdcInsnNode("§7[§cNot §aSo §9Essential§7] §rno"),
-						new MethodInsnNode(INVOKESTATIC, "gg/essential/universal/UChat", "chat", "(Ljava/lang/Object;)V", false),
-						new InsnNode(RETURN)
+					new LdcInsnNode("§7[§cNot §aSo §9Essential§7] §rno"),
+					new MethodInsnNode(INVOKESTATIC, "gg/essential/universal/UChat", "chat", "(Ljava/lang/Object;)V", false),
+					new InsnNode(RETURN)
 				));
 			}
 		}

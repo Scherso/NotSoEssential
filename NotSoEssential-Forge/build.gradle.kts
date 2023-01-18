@@ -5,7 +5,6 @@ plugins {
 	java
 	id("gg.essential.loom") version ("0.10.0.+")
 	id("dev.architectury.architectury-pack200") version ("0.1.3")
-	id("net.kyori.blossom") version ("1.3.1")
 }
 
 java {
@@ -14,20 +13,14 @@ java {
 	}
 }
 
-val projectName:    String by project
-val projectId:      String by project
+val projectName: String by project
+val projectId: String by project
 val projectVersion: String by project
-val projectGroup:   String by project
-val mcVersion:      String = property("minecraft.version").toString()
+val projectGroup: String by project
+val mcVersion: String = property("minecraft.version").toString()
 
 version = projectVersion
 group = projectGroup
-
-blossom {
-	replaceToken("@VER@", projectVersion)
-	replaceToken("@NAME@", projectName)
-	replaceToken("@ID@", projectId)
-}
 
 repositories.mavenCentral()
 

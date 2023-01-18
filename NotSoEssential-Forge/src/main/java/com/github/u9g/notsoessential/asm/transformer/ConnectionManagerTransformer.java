@@ -61,8 +61,8 @@ public class ConnectionManagerTransformer implements ITransformer
 				 * and returning 'false' at the head. */
 				this.clearInstructions(method);
 				method.instructions.insert(this.createInsnList(
-						new InsnNode(ICONST_0),
-						new InsnNode(IRETURN)
+					new InsnNode(ICONST_0),
+					new InsnNode(IRETURN)
 				));
 			}
 		}
