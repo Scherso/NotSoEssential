@@ -13,10 +13,10 @@ public class EssentialConfigMixin
 {
 
 	@Inject(method = {
-			"getShowEssentialIndicatorOnTab()Z",
-			"getShowEssentialIndicatorOnNametag()Z",
-			"getEssentialEnabled()Z",
-			"getEssentialFull()Z"
+		"getShowEssentialIndicatorOnTab()Z",
+		"getShowEssentialIndicatorOnNametag()Z",
+		"getEssentialEnabled()Z",
+		"getEssentialFull()Z"
 	}, at = @At("HEAD"), cancellable = true, remap = false)
 	private void nse$overrideEssentialConfigF(final CallbackInfoReturnable<Boolean> clr)
 	{
@@ -24,8 +24,8 @@ public class EssentialConfigMixin
 	}
 
 	@Inject(method = {
-			"getDisableCosmetics()Z",
-			"getDisableAllNotifications()Z"
+		"getDisableCosmetics()Z",
+		"getDisableAllNotifications()Z"
 	}, at = @At("HEAD"), cancellable = true, remap = false)
 	private void nse$overrideEssentialConfigT(final CallbackInfoReturnable<Boolean> clr)
 	{

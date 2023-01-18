@@ -47,8 +47,8 @@ public class EssentialModelRendererTransformer implements ITransformer
 						if (INSN instanceof VarInsnNode && INSN.getOpcode() == DSTORE)
 						{
 							method.instructions.insertBefore(INSN.getNext(), this.createInsnList(
-									new InsnNode(ICONST_0),
-									new InsnNode(IRETURN)
+								new InsnNode(ICONST_0),
+								new InsnNode(IRETURN)
 							));
 							method.instructions.remove(INSN);
 						}
@@ -62,8 +62,8 @@ public class EssentialModelRendererTransformer implements ITransformer
 				case "func_177142_b":
 					this.clearInstructions(method);
 					method.instructions.insert(this.createInsnList(
-							new InsnNode(ICONST_0),
-							new InsnNode(IRETURN)
+						new InsnNode(ICONST_0),
+						new InsnNode(IRETURN)
 					));
 					break;
 			}

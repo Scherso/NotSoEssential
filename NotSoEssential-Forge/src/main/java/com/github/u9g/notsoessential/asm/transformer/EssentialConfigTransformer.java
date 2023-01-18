@@ -44,24 +44,24 @@ public class EssentialConfigTransformer implements ITransformer
 				case "getEssentialFull":
 					this.clearInstructions(method);
 					method.instructions.insert(this.createInsnList(
-							/* Inserting the following
-							 * ICONST_0 - false
-							 * IRETURN  - return int value
-							 * this meaning return false. */
-							new InsnNode(ICONST_0),
-							new InsnNode(IRETURN)
+						/* Inserting the following
+						 * ICONST_0 - false
+						 * IRETURN  - return int value
+						 * this meaning return false. */
+						new InsnNode(ICONST_0),
+						new InsnNode(IRETURN)
 					));
 					break;
 				case "getDisableCosmetics":
 				case "getDisableAllNotifications":
 					this.clearInstructions(method);
 					method.instructions.insert(this.createInsnList(
-							/* Inserting the following:
-							 * ICONST_1 - true
-							 * IRETURN  - return int value
-							 * this meaning return true. */
-							new InsnNode(ICONST_1),
-							new InsnNode(IRETURN)
+						/* Inserting the following:
+						 * ICONST_1 - true
+						 * IRETURN  - return int value
+						 * this meaning return true. */
+						new InsnNode(ICONST_1),
+						new InsnNode(IRETURN)
 					));
 					break;
 			}

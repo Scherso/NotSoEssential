@@ -47,8 +47,8 @@ public class OnboardingDataTransformer implements ITransformer
 					 * IRETURN  - return int value
 					 * this meaning return false. */
 					method.instructions.insert(this.createInsnList(
-							new InsnNode(ICONST_0),
-							new InsnNode(IRETURN)
+						new InsnNode(ICONST_0),
+						new InsnNode(IRETURN)
 					));
 					break;
 				case "hasDeniedTos":
@@ -59,8 +59,8 @@ public class OnboardingDataTransformer implements ITransformer
 					 * IRETURN  - return int value
 					 * this meaning return true. */
 					method.instructions.insert(this.createInsnList(
-							new InsnNode(ICONST_1),
-							new InsnNode(IRETURN)
+						new InsnNode(ICONST_1),
+						new InsnNode(IRETURN)
 					));
 					break;
 			}

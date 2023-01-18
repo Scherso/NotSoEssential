@@ -13,11 +13,11 @@ public class ConnectionMixin
 {
 
 	@Inject(method = {
-			"send(Lgg/essential/connectionmanager/common/packet/Packet;Ljava/util/function/Consumer;Ljava/util/concurrent/TimeUnit;Ljava/lang/Long;Ljava/util/UUID;)V",
-			"attemptConnect()V",
-			"attemptConnect$1385ff()V",
-			"doAttemptConnect()V",
-			"retryConnectWithBackoff()V"
+		"send(Lgg/essential/connectionmanager/common/packet/Packet;Ljava/util/function/Consumer;Ljava/util/concurrent/TimeUnit;Ljava/lang/Long;Ljava/util/UUID;)V",
+		"attemptConnect()V",
+		"attemptConnect$1385ff()V",
+		"doAttemptConnect()V",
+		"retryConnectWithBackoff()V"
 	}, at = @At("HEAD"), cancellable = true, remap = false)
 	private void nse$overrideConnection(final CallbackInfo ci)
 	{

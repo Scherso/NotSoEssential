@@ -18,8 +18,8 @@ public class EssentialMultiplayerGuiMixin
 	/**
 	 * Hides the Essential Multiplayer GUI.
 	 *
-	 * @author U9G (<a href="https://github.com/U9G">...</a>)
 	 * @param ci {@link CallbackInfo}
+	 * @author U9G (<a href="https://github.com/U9G">...</a>)
 	 */
 	@Inject(method = "initGui(Lnet/minecraft/class_500;)V", at = @At("TAIL"), remap = false)
 	private void nse$initGui(final CallbackInfo ci)
@@ -31,8 +31,7 @@ public class EssentialMultiplayerGuiMixin
 			try
 			{
 				fieldValue = field.get(this);
-			}
-			catch (IllegalAccessException e)
+			} catch (IllegalAccessException e)
 			{
 				e.printStackTrace();
 			}
@@ -47,7 +46,9 @@ public class EssentialMultiplayerGuiMixin
 				{
 					Field visible = fieldValue.getClass().getField("visible");
 					visible.set(fieldValue, false);
-				} catch (Exception ignored) {}
+				} catch (Exception ignored)
+				{
+				}
 			}
 		}
 	}

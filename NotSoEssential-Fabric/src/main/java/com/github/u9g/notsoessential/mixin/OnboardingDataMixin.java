@@ -13,7 +13,7 @@ public class OnboardingDataMixin
 {
 
 	@Inject(method = {
-			"hasAcceptedTos()Z",
+		"hasAcceptedTos()Z",
 // 			"hasAcceptedEssentialTOS"
 	}, at = @At("HEAD"), cancellable = true, remap = false)
 	private static void nse$hasAcceptedTos(final CallbackInfoReturnable<Boolean> clr)
@@ -22,7 +22,7 @@ public class OnboardingDataMixin
 	}
 
 	@Inject(method = {
-			"hasDeniedTos()Z",
+		"hasDeniedTos()Z",
 //			"hasDeniedEssentialTOS"
 	}, at = @At("HEAD"), cancellable = true, remap = false)
 	private static void nse$hasDeniedTos(final CallbackInfoReturnable<Boolean> clr)
