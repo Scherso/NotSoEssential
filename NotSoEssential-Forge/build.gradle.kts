@@ -17,7 +17,7 @@ java {
 val projectName: String by project
 val projectId: String by project
 val projectVersion: String by project
-val proje"ctGroup: String by project
+val projectGroup: String by project
 val mcVersion: String = property("minecraft.version").toString()
 
 version = projectVersion
