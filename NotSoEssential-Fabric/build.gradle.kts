@@ -2,7 +2,6 @@ plugins {
 	idea
 	java
 	id("fabric-loom") version ("1.0-SNAPSHOT")
-	id("net.kyori.blossom") version ("1.3.1")
 }
 
 java {
@@ -22,12 +21,6 @@ val mcVersion: String = property("minecraft.version").toString()
 
 version = projectVersion
 group = projectGroup
-
-blossom {
-	replaceToken("@VER@", projectVersion)
-	replaceToken("@NAME@", projectName)
-	replaceToken("@ID@", projectId)
-}
 
 repositories.mavenCentral()
 
