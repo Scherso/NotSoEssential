@@ -1,7 +1,19 @@
+<<<<<<< HEAD
 name: Build With Gradle
 
 on:
   push:
+=======
+name: Build
+
+on:
+  push:
+    branches: '*'
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+>>>>>>> main
   pull_request:
     branches: '*'
     paths-ignore:
@@ -12,6 +24,7 @@ on:
 
 jobs:
   build:
+<<<<<<< HEAD
     name: Build with Gradle
     runs-on: ubuntu-latest
     steps:
@@ -28,3 +41,15 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build With Gradle
         run: ./gradlew build --no-daemon
+=======
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: "17"
+      - name: Build
+        run: chmod +x ./gradlew ; ./gradlew build --no-daemon
+>>>>>>> main
