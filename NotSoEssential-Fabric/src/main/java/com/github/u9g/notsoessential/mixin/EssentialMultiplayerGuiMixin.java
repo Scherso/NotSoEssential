@@ -28,6 +28,7 @@ public class EssentialMultiplayerGuiMixin
 		{
 			field.setAccessible(true);
 			Object fieldValue = null;
+			
 			try
 			{
 				fieldValue = field.get(this);
@@ -35,7 +36,9 @@ public class EssentialMultiplayerGuiMixin
 			{
 				e.printStackTrace();
 			}
+			
 			if (fieldValue == null) continue;
+			
 			try
 			{
 				Method hideMethod = fieldValue.getClass().getMethod("hide");
