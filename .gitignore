@@ -1,4 +1,4 @@
-# eclipse
+# Eclipse IDE Files.
 eclipse
 bin
 *.launch
@@ -7,7 +7,7 @@ bin
 .classpath
 .project
 
-# idea
+# IntelliJ IDEA Output Files. 
 out
 classes
 *.ipr
@@ -15,18 +15,37 @@ classes
 *.iml
 .idea
 
-# vscode
+# VScode Configuration Directory. 
 .vscode
 
-# gradle
+# Gradle Output Directories. 
 build
 .gradle
 
-#Netbeans
+# Netbeans Output Files. 
 .nb-gradle
 .nb-gradle-properties
 
-# other
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# VM Crash Logs.
+hs_err_pid*
+replay_pid*
+
+# Other
 run
 .DS_Store
 Thumbs.db
