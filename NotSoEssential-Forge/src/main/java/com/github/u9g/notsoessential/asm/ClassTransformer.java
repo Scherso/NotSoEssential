@@ -45,37 +45,37 @@ public class ClassTransformer implements IClassTransformer
 
 	private void registerTransformer(@NotNull ITransformer transformer)
 	{
-		final List<ITransformer> LIST = this.TRANSFORMER_HASHMAP.get(transformer.getClassName());
+		final List<ITransformer> transformer_list = TRANSFORMER_HASHMAP.get(transformer.getClassName());
 		if (LIST == null)
 		{
-			final List<ITransformer> NEW_LIST = new ArrayList<>();
-			NEW_LIST.add(transformer);
-			this.TRANSFORMER_HASHMAP.put(transformer.getClassName(), NEW_LIST);
+			final List<ITransformer> new_list = new ArrayList<>();
+			new_list.add(transformer);
+			TRANSFORMER_HASHMAP.put(transformer.getClassName(), new_list);
 		} else
-			LIST.add(transformer);
+			transformer_list.add(transformer);
 	}
 
 	@Override
 	public byte[] transform(final String name, final String transformedName, byte[] bytes)
 	{
 		if (bytes == null) return (null);
-		final List<ITransformer> TRANSFORMER_LIST = this.TRANSFORMER_HASHMAP.get(transformedName);
-		if (TRANSFORMER_LIST == null) return (bytes);
+		final List<ITransformer> transformer_list = TRANSFORMER_HASHMAP.get(transformedName);
+		if (transformer_list == null) return (bytes);
 
-		for (int i = TRANSFORMER_LIST.size() - 1; i > -1; i--)              /* For statement here matches a for-each, ex:          */
+		for (int i = transformer_list.size() - 1; i > -1; i--)              /* For statement here matches a for-each, ex:          */
 		{                                                                   /* for (ITransformer transformer : TRANSFORMER_LIST) { */
-			final ITransformer TRANSFORMER = TRANSFORMER_LIST.get(i);   /*     transformer.transform(node, transformedName);   */
-			final ClassNode    NODE        = new ClassNode();           /* }                                                   */
-			final ClassReader  READER      = new ClassReader(bytes);    /* Statement is written differently for performance.   */
-			READER.accept(NODE, 0);
-			TRANSFORMER.transform(NODE, transformedName);
-			final ClassWriter WRITER = new ClassWriter(READER, 0);
-			NODE.accept(WRITER);
+			final ITransformer transformer = transformer_list.get(i);       /*     transformer.transform(node, transformedName);   */
+			final ClassNode    cn          = new ClassNode();               /* }                                                   */
+			final ClassReader  cr          = new ClassReader(bytes);        /* Statement is written differently for performance.   */
+			cr.accept(NODE, 0);
+			transformer.transform(cn, transformedName);
+			final ClassWriter cw = new ClassWriter(cr, 0);
+			cn.accept(cw);
 
 			if (DUMP_BYTECODE)
-				this.dumpBytes(transformedName, WRITER);
+				this.dumpBytes(transformedName, cw);
 
-			bytes = WRITER.toByteArray();
+			bytes = cw.toByteArray();
 		}
 		return (bytes);
 	}
@@ -87,13 +87,13 @@ public class ClassTransformer implements IClassTransformer
 		{
 			name = (name.contains("$")) ? name.replace('$', '.') + ".class" : name + ".class";
 
-			final File BYTECODE_DIR = new File(".bytecode.out");
-			if (!BYTECODE_DIR.exists()) BYTECODE_DIR.mkdirs();
+			final File bytecode_dir = new File(".bytecode.out");
+			if (!bytecode_dir.exists()) bytecode_dir.mkdirs();
 
-			final File BYTECODE_OUT = new File(BYTECODE_DIR, name);
-			if (!BYTECODE_OUT.exists()) BYTECODE_OUT.createNewFile();
+			final File bytecode_out = new File(bytecode_dir, name);
+			if (!bytecode_out.exists()) bytecode_out.createNewFile();
 
-			FileOutputStream stream = new FileOutputStream(BYTECODE_OUT);
+			FileOutputStream stream = new FileOutputStream(bytecode_out);
 			stream.write(writer.toByteArray());
 			stream.close();
 		} catch (Exception ex)
