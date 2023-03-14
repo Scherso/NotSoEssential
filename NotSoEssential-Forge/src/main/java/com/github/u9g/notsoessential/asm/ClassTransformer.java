@@ -28,6 +28,12 @@ public class ClassTransformer implements IClassTransformer
 	 * @see HashMap
 	 */
 	private final HashMap<String, List<ITransformer>> TRANSFORMER_HASHMAP = new HashMap<>();
+	
+	/**
+	 * Local mneumonic to mark the end of a list when iterating
+	 * in a reverse order.
+	 */
+	static final int EOL = -1;
 
 	public ClassTransformer()
 	{
@@ -62,7 +68,7 @@ public class ClassTransformer implements IClassTransformer
 		final List<ITransformer> transformer_list = TRANSFORMER_HASHMAP.get(transformedName);
 		if (transformer_list == null) return (bytes);
 
-		for (int i = transformer_list.size() - 1; i > -1; i--)              /* For statement here matches a for-each, ex:          */
+		for (int i = transformer_list.size() - 1; i > EOL; i--)              /* For statement here matches a for-each, ex:          */
 		{                                                                   /* for (ITransformer transformer : TRANSFORMER_LIST) { */
 			final ITransformer transformer = transformer_list.get(i);       /*     transformer.transform(node, transformedName);   */
 			final ClassNode    cn          = new ClassNode();               /* }                                                   */
