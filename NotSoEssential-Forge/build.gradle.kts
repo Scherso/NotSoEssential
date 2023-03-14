@@ -14,19 +14,19 @@ java {
 	}
 }
 
-val projectName: String by project
-val projectId: String by project
+val projectName:    String by project
+val projectId:      String by project
 val projectVersion: String by project
-val projectGroup: String by project
-val mcVersion: String = property("minecraft.version").toString()
+val projectGroup:   String by project
+val mcVersion:      String = property("minecraft.version").toString()
 
 version = projectVersion
-group = projectGroup
+group   = projectGroup
 
 blossom {
-	replaceToken("@VER@", projectVersion)
+	replaceToken("@VER@",  projectVersion)
 	replaceToken("@NAME@", projectName)
-	replaceToken("@ID@", projectId)
+	replaceToken("@ID@",   projectId)
 }
 
 repositories.mavenCentral()
@@ -60,8 +60,8 @@ tasks.processResources {
 
 	filesMatching("mcmod.info") {
 		expand(
-			"id" to projectId,
-			"version" to projectVersion,
+			"id"        to projectId,
+			"version"   to projectVersion,
 			"mcversion" to mcVersion
 		)
 	}
