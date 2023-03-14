@@ -20,7 +20,7 @@ val fabricVersion:  String = property("fabric_version").toString()
 val mcVersion:      String = property("minecraft.version").toString()
 
 version = projectVersion
-group = projectGroup
+group   = projectGroup
 
 repositories.mavenCentral()
 
