@@ -52,7 +52,7 @@ public class ClassTransformer implements IClassTransformer
 	private void registerTransformer(@NotNull ITransformer transformer)
 	{
 		final List<ITransformer> transformer_list = TRANSFORMER_HASHMAP.get(transformer.getClassName());
-		if (LIST == null)
+		if (transformer_list == null)
 		{
 			final List<ITransformer> new_list = new ArrayList<>();
 			new_list.add(transformer);
