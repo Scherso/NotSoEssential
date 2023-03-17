@@ -14,6 +14,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class CommandConfigMixin
 {
 
+	/**
+	 * Removes the users ability to execute the '/essential' command.
+	 * Instead, the command will output 'no' into the chat.
+	 *
+	 * @param ci {@link CallbackInfo}
+	 */
 	@Inject(method = "handle()V", at = @At("HEAD"), cancellable = true, remap = false)
 	private void nse$handle(final CallbackInfo ci)
 	{

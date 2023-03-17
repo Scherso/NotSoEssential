@@ -16,8 +16,8 @@ public class CommandConfigTransformer implements ITransformer
 	}
 
 	/**
-	 * Removes the ability to use the '/essential' command, instead, replacing its functionality of opening a GUI, to
-	 * instead print 'no' to the chat.
+	 * Removes the users ability to execute the '/essential' command.
+	 * Instead, the command will output 'no' into the chat.
 	 *
 	 * @param classNode transformed class node
 	 * @param name      transformed class name

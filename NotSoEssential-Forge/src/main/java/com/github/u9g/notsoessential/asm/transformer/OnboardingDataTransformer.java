@@ -17,17 +17,19 @@ public class OnboardingDataTransformer implements ITransformer
 	}
 
 	/**
-	 * <pre>
-	 *     This method is used to transform the OnboardingData class.
-	 *     Main function: Disable the ability to accept Essential's terms
-	 *     of service, and in doing so, deny the terms of service as-well.
+	 * Attempts to transform the OnboardingData class. <br>
+	 * Disables the ability to accept Essential's terms of service, and in
+	 * doing so, will theoretically prevent any telemetry data from being
+	 * harvested by Essential.
 	 *
-	 *     FOR REFERENCE:
-	 *     {@link org.objectweb.asm.Opcodes#IRETURN} return an int from a method,
-	 *     in this case, functions in transformed classes returning the following:
-	 *     {@link org.objectweb.asm.Opcodes#ICONST_0} false
-	 *     {@link org.objectweb.asm.Opcodes#ICONST_1} true
-	 * </pre>
+	 * <ul>
+	 *     <li> {@link org.objectweb.asm.Opcodes#ICONST_0} Pushes a constant 0 value
+	 *     onto the stack, in a boolean context, the value is 'false'. </li>
+	 *     <li> {@link org.objectweb.asm.Opcodes#ICONST_1} Pushes a constant 1 value
+	 *     onto the stack, in a boolean context, the value if 'true'. </li>
+	 *     <li> {@link org.objectweb.asm.Opcodes#IRETURN} Returns an integer value
+	 *     from a method. </li>
+	 * </ul>
 	 *
 	 * @param classNode transformed class node
 	 * @param name      transformed class name

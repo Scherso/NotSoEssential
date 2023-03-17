@@ -17,21 +17,23 @@ public class ConnectionManagerTransformer implements ITransformer
 	}
 
 	/**
-	 * <pre>
-	 *     This method is used to cancel any connection attempts to an external
-	 *     server, ie. Telemetry. {@link OnboardingDataTransformer} is used to deny
-	 *     the user from accepting the TOS, which should stop any telemetry by
-	 *     Essential. This procedure is used to confirm that the client does not
-	 *     make any attempts at an external connection as a 'just incase' thing.
+	 * Attempts to cancel any external connections made via Essential itself,
+	 * i.e. telemetry. <br>
+	 * Although {@link com.github.u9g.notsoessential.asm.transformer.OnboardingDataTransformer}
+	 * already attempts to deny the terms of service, which in turn would
+	 * *hopefully* prevent any external connections, this is a failsafe, and
+	 * confirms that there is absolutely no external connections made.
 	 *
-	 *     FOR REFERENCE:
-	 *     {@link org.objectweb.asm.Opcodes#ICONST_0} in this use; false.
-	 *     {@link org.objectweb.asm.Opcodes#ICONST_1} in this use; true.
-	 *     {@link org.objectweb.asm.Opcodes#IRETURN} return an int from a method.
-	 *     "()V" will describe a method as void, meaning it's a procedure.
-	 *     "()Z" will describe a method as boolean, meaning it's a function that
-	 *     returns a boolean.
-	 * </pre>
+	 * <ul>
+	 *     <li> {@link org.objectweb.asm.Opcodes#ICONST_0} Pushes a constant 0 value
+	 *     onto the stack, in a boolean context, the value is 'false'. </li>
+	 *     <li> {@link org.objectweb.asm.Opcodes#ICONST_1} Pushes a constant 1 value
+	 *     onto the stack, in a boolean context, the value if 'true'. </li>
+	 *     <li> {@link org.objectweb.asm.Opcodes#IRETURN} Returns an integer value
+	 *     from a method. </li>
+	 *     <li> "()V" Describes a method as void, making it a procedure. </li>
+	 *     <li> "()Z" Describes a method as function which returns a boolean. </li>
+	 * </ul>
 	 *
 	 * @param classNode transformed class node
 	 * @param name      transformed class name

@@ -7,12 +7,24 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+/**
+ * Attempts to cancel any external connections made via Essential itself,
+ * i.e. telemetry. <br>
+ * Although {@link OnboardingDataMixin} already attempts to deny the terms
+ * of service, which in turn would *hopefully* prevent any external connections,
+ * this is a failsafe, and confirms that there is absolutely no external connections made.
+ */
 @Pseudo
 @SuppressWarnings("UnresolvedMixinReference")
 @Mixin(targets = "gg.essential.network.connectionmanager.ConnectionManager", remap = false)
 public class ConnectionManagerMixin
 {
 
+	/**
+	 * Cancels procedural methods.
+	 *
+	 * @param ci {@link CallbackInfo}
+	 */
 	@Inject(method = {
 		"onOpenAsync(Lgg/essential/connectionmanager/common/packet/connection/ClientConnectionLoginPacket;)V",
 		"respond(Lgg/essential/connectionmanager/common/packet/Packet;Lgg/essential/connectionmanager/common/packet/Packet;)V",
@@ -24,6 +36,11 @@ public class ConnectionManagerMixin
 		ci.cancel();
 	}
 
+	/**
+	 * Returns boolean functions as false.
+	 *
+	 * @param clr {@link CallbackInfoReturnable}
+	 */
 	@Inject(method = {
 		"isOpen()Z",
 		"isAuthenticated()Z",

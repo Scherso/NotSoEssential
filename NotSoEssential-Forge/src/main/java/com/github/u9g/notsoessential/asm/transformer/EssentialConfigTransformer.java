@@ -17,16 +17,27 @@ public class EssentialConfigTransformer implements ITransformer
 	}
 
 	/**
-	 * <pre>
-	 *     This method is used to transform the EssentialConfig class.
-	 *     Any configuration options local to this class will be transformed
-	 *     according to their 'usefulness', or lack thereof.
-	 *
-	 *     FOR REFERENCE:
-	 *     {@link org.objectweb.asm.Opcodes#ICONST_0} in this use; false.
-	 *     {@link org.objectweb.asm.Opcodes#ICONST_1} in this use; true.
-	 *     {@link org.objectweb.asm.Opcodes#IRETURN} return an int from a method,
-	 * </pre>
+	 * Attempting to transform the EssentialConfig class. Any configuration options
+	 * local to this class will be transformed according to their 'usefulness', or
+	 * lack thereof. <br>
+	 * <p> Configurations modified, </p>
+	 * <ul>
+	 *     <li> {@code getShowEssentialIndicatorOnTab} as false. </li>
+	 *     <li> {@code getShowEssentialIndicatorOnNametag} as false. </li>
+	 *     <li> {@code getEssentialEnabled} as false. </li>
+	 *     <li> {@code getEssentialFull} as false. </li>
+	 *     <li> {@code getDisableCosmetics} as true. </li>
+	 *     <li> {@code getDisableAllNotifications} as true. </li>
+	 * </ul>
+	 * <p> Reference, </p>
+	 * <ul>
+	 *     <li> {@link org.objectweb.asm.Opcodes#ICONST_0} Pushes a constant 0 value
+	 *     onto the stack, in a boolean context, the value is 'false'. </li>
+	 *     <li> {@link org.objectweb.asm.Opcodes#ICONST_1} Pushes a constant 1 value
+	 *     onto the stack, in a boolean context, the value if 'true'. </li>
+	 *     <li> {@link org.objectweb.asm.Opcodes#IRETURN} Returns an integer value
+	 *     from a method. </li>
+	 * </ul>
 	 *
 	 * @param classNode transformed class node
 	 * @param name      transformed class name

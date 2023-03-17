@@ -6,12 +6,20 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+/**
+ * Attempts to cancel any external connections made via Essential.
+ */
 @Pseudo
 @SuppressWarnings("UnresolvedMixinReference")
 @Mixin(targets = "gg.essential.network.connectionmanager.Connection", remap = false)
 public class ConnectionMixin
 {
 
+	/**
+	 * Cancelling procedural methods at the head of the method.
+	 *
+	 * @param ci {@link CallbackInfo}
+	 */
 	@Inject(method = {
 		"send(Lgg/essential/connectionmanager/common/packet/Packet;Ljava/util/function/Consumer;Ljava/util/concurrent/TimeUnit;Ljava/lang/Long;Ljava/util/UUID;)V",
 		"attemptConnect()V",

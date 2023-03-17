@@ -18,18 +18,16 @@ public class GuiOptionsEditorTransformer implements ITransformer
 	}
 
 	/**
-	 * <pre>
-	 *     This method is used to transform the GuiOptionsEditor class.
-	 *     This procedure removes the 'Essential Settings...' button in
-	 *     the options menu, in removing this button, it will be replaced
-	 *     with the original; 'Snooper Settings...'.
+	 * Attempts to transform the GuiOptionsEditor class. <br>
+	 * Removes 'Essential Settings...' button in the options menu, in removing this,
+	 * the 'Snooper Settings...' button will be its replacement.
 	 *
-	 *     FOR REFERENCE:
-	 *     {@link org.objectweb.asm.Opcodes#BIPUSH} pushes a byte onto the stack as an
-	 *     integer value.
-	 *     {@link IntInsnNode#IntInsnNode(int, int)} creates a new {@link IntInsnNode}
-	 *     with the specified opcode and operand.
-	 * </pre>
+	 * <ul>
+	 *     <li> {@link org.objectweb.asm.Opcodes#BIPUSH} pushes a byte onto the stack as an
+	 *     integer value. </li>
+	 *     <li> {@link IntInsnNode#IntInsnNode(int, int)} creates a new {@link IntInsnNode}
+	 *     with the specified opcode and operand. </li>
+	 * </ul>
 	 *
 	 * @param classNode transformed class node
 	 * @param name      transformed class name

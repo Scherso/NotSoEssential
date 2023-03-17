@@ -15,19 +15,16 @@ public class EssentialModelRendererTransformer implements ITransformer
 	}
 
 	/**
-	 * <pre>
-	 *     This method is used to transform the EssentialModelRenderer class.
-	 *     Method finds and modifies methods that render cosmetics.
-	 *     Procedural methods are returned at head,
-	 *     Most functions are returned false.
-	 *     The main function of this procedure is to cancel the rendering of
-	 *     cosmetics.
+	 * Attempting to transform the EssentialModelRenderer class. <br>
+	 * Procedural methods in EssentialModelRenderer are returned at head,
+	 * most functions are returned false. The intended outcome is to cancel
+	 * the rendering of cosmetics.
 	 *
-	 *     FOR REFERENCE:
-	 *     {@link org.objectweb.asm.tree.VarInsnNode} is a node that represents a local variable instruction
-	 *     that loads and stores the value of a local variable.
-	 *     {@link org.objectweb.asm.Opcodes#DSTORE} stores a double into a local variable.
-	 * </pre>
+	 * <ul>
+	 *     <li> {@link org.objectweb.asm.tree.VarInsnNode} is a node that represents a local variable instruction
+	 *     that loads and stores the value of a local variable. </li>
+	 *     <li> {@link org.objectweb.asm.Opcodes#DSTORE} stores a double into a local variable. </li>
+	 * </ul>
 	 *
 	 * @param classNode transformed class node
 	 * @param name      transformed class name
