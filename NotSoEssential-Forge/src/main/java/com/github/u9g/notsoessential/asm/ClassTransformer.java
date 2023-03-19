@@ -68,7 +68,7 @@ public class ClassTransformer implements IClassTransformer
 		final List<ITransformer> transformer_list = TRANSFORMER_HASHMAP.get(transformedName);
 		if (transformer_list == null) return (bytes);
 
-		for (int i = transformer_list.size() - 1; i > EOL; i--)              /* For statement here matches a for-each, ex:          */
+		for (int i = transformer_list.size() - 1; i > EOL; i--)             /* For statement here matches a for-each, ex:          */
 		{                                                                   /* for (ITransformer transformer : TRANSFORMER_LIST) { */
 			final ITransformer transformer = transformer_list.get(i);       /*     transformer.transform(node, transformedName);   */
 			final ClassNode    cn          = new ClassNode();               /* }                                                   */
