@@ -16,7 +16,9 @@ public class ConnectionMixin
 {
 
 	/**
-	 * Cancelling procedural methods at the head of the method.
+	 * Cancelling procedural methods at the head with the hope of
+	 * preventing any attempted connections or out-bound packets 
+	 * from Essential.
 	 *
 	 * @param ci {@link CallbackInfo}
 	 */
