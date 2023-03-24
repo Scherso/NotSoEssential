@@ -21,7 +21,8 @@ public class ConnectionManagerMixin
 {
 
 	/**
-	 * Cancels procedural methods.
+	 * Cancels procedural methods in the method array, in doing this,
+	 * Essential is unable to send outbound, respond inbound, or open.
 	 *
 	 * @param ci {@link CallbackInfo}
 	 */
@@ -37,7 +38,9 @@ public class ConnectionManagerMixin
 	}
 
 	/**
-	 * Returns boolean functions as false.
+	 * Returns boolean functions as false. Setting the return value os 
+	 * 'isOpen' and 'isAuthenticated' hopes to return conditions that rely on
+	 * the function, and stop any telemetry.
 	 *
 	 * @param clr {@link CallbackInfoReturnable}
 	 */
