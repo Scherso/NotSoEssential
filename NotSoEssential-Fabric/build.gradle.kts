@@ -38,9 +38,9 @@ tasks.processResources {
 
 	filesMatching("fabric.mod.json") {
 		expand(
-			"id" to projectId,
-			"name" to projectName,
-			"version" to projectVersion,
+			"id"        to projectId,
+			"name"      to projectName,
+			"version"   to projectVersion,
 			"mcversion" to mcVersion
 		)
 	}
