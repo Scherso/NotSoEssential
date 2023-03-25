@@ -28,7 +28,7 @@ public class ClassTransformer implements IClassTransformer
 	 * @see HashMap
 	 */
 	private final HashMap<String, List<ITransformer>> TRANSFORMER_HASHMAP = new HashMap<>();
-	
+
 	/**
 	 * Local mneumonic to mark the end of a list when iterating
 	 * in a reverse order.
@@ -43,7 +43,7 @@ public class ClassTransformer implements IClassTransformer
 		registerTransformer(new EssentialConfigTransformer());
 		registerTransformer(new EssentialModelRendererTransformer());
 		registerTransformer(new EssentialMultiplayerGuiTransformer());
-		registerTransformer(new GuiOptionsEditorTransformer());
+		registerTransformer(new MenuButtonTransformer());
 		registerTransformer(new OnboardingDataTransformer());
 		registerTransformer(new OnlineIndicatorTransformer());
 		registerTransformer(new PauseMenuDisplayTransformer());
