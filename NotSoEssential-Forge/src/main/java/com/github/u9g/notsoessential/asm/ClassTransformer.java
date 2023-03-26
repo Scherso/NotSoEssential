@@ -24,14 +24,12 @@ public class ClassTransformer implements IClassTransformer
 	/**
 	 * List of transformers to be registered later,
 	 *
-	 * @associates com.github.u9g.notsoessential.asm.ITransformer
 	 * @see HashMap
 	 */
 	private final HashMap<String, List<ITransformer>> TRANSFORMER_HASHMAP = new HashMap<>();
 
 	/**
-	 * Local mneumonic to mark the end of a list when iterating
-	 * in a reverse order.
+	 * Local mnemonic to mark the end of a list when iterating in a reverse order.
 	 */
 	static final int EOL = -1;
 
@@ -52,13 +50,11 @@ public class ClassTransformer implements IClassTransformer
 	private void registerTransformer(@NotNull ITransformer transformer)
 	{
 		final List<ITransformer> transformer_list = TRANSFORMER_HASHMAP.get(transformer.getClassName());
-		if (transformer_list == null)
-		{
+		if (transformer_list == null) {
 			final List<ITransformer> new_list = new ArrayList<>();
 			new_list.add(transformer);
 			TRANSFORMER_HASHMAP.put(transformer.getClassName(), new_list);
-		} else
-			transformer_list.add(transformer);
+		} else transformer_list.add(transformer);
 	}
 
 	@Override
@@ -78,8 +74,7 @@ public class ClassTransformer implements IClassTransformer
 			final ClassWriter cw = new ClassWriter(cr, 0);
 			cn.accept(cw);
 
-			if (DUMP_BYTECODE)
-				this.dumpBytes(transformedName, cw);
+			if (DUMP_BYTECODE) this.dumpBytes(transformedName, cw);
 
 			bytes = cw.toByteArray();
 		}
@@ -89,8 +84,7 @@ public class ClassTransformer implements IClassTransformer
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	private void dumpBytes(String name, ClassWriter writer)
 	{
-		try
-		{
+		try {
 			name = (name.contains("$")) ? name.replace('$', '.') + ".class" : name + ".class";
 
 			final File bytecode_dir = new File(".bytecode.out");
@@ -102,8 +96,7 @@ public class ClassTransformer implements IClassTransformer
 			FileOutputStream stream = new FileOutputStream(bytecode_out);
 			stream.write(writer.toByteArray());
 			stream.close();
-		} catch (Exception ex)
-		{
+		} catch (Exception ex) {
 			System.out.println("Failed to dump bytecode for " + name);
 			ex.printStackTrace();
 		}
