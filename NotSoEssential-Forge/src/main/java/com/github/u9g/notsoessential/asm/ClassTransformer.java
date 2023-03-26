@@ -50,7 +50,8 @@ public class ClassTransformer implements IClassTransformer
 	private void registerTransformer(@NotNull ITransformer transformer)
 	{
 		final List<ITransformer> transformer_list = TRANSFORMER_HASHMAP.get(transformer.getClassName());
-		if (transformer_list == null) {
+		if (transformer_list == null) 
+		{
 			final List<ITransformer> new_list = new ArrayList<>();
 			new_list.add(transformer);
 			TRANSFORMER_HASHMAP.put(transformer.getClassName(), new_list);
@@ -84,7 +85,8 @@ public class ClassTransformer implements IClassTransformer
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	private void dumpBytes(String name, ClassWriter writer)
 	{
-		try {
+		try 
+		{
 			name = (name.contains("$")) ? name.replace('$', '.') + ".class" : name + ".class";
 
 			final File bytecode_dir = new File(".bytecode.out");
@@ -96,7 +98,8 @@ public class ClassTransformer implements IClassTransformer
 			FileOutputStream stream = new FileOutputStream(bytecode_out);
 			stream.write(writer.toByteArray());
 			stream.close();
-		} catch (Exception ex) {
+		} catch (Exception ex) 
+		{
 			System.out.println("Failed to dump bytecode for " + name);
 			ex.printStackTrace();
 		}
