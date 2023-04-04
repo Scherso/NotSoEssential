@@ -17,14 +17,13 @@ public class ClassTransformer implements IClassTransformer
 {
 
 	/**
-	 * Create a JVM flag to dump transformed classes. Usable by adding -DNSE.debugBytecode=true to JVM arguments.
+	 * Create a JVM flag to dump transformed classes. <br>
+	 * Usable by adding {@code -DNSE.debugBytecode=true} to JVM arguments.
 	 */
 	public static final boolean DUMP_BYTECODE = Boolean.parseBoolean(System.getProperty("NSE.debugBytecode", "false"));
 
 	/**
-	 * List of transformers to be registered later,
-	 *
-	 * @see HashMap
+	 * List of transformers to be registered later.
 	 */
 	private final HashMap<String, List<ITransformer>> TRANSFORMER_HASHMAP = new HashMap<>();
 
@@ -47,10 +46,15 @@ public class ClassTransformer implements IClassTransformer
 		registerTransformer(new PauseMenuDisplayTransformer());
 	}
 
+	/**
+	 * Registers transformers to be added to {@link #TRANSFORMER_HASHMAP}.
+	 *
+	 * @param transformer the transformer to be registered.
+	 */
 	private void registerTransformer(@NotNull ITransformer transformer)
 	{
 		final List<ITransformer> transformer_list = TRANSFORMER_HASHMAP.get(transformer.getClassName());
-		if (transformer_list == null) 
+		if (transformer_list == null)
 		{
 			final List<ITransformer> new_list = new ArrayList<>();
 			new_list.add(transformer);
@@ -85,7 +89,7 @@ public class ClassTransformer implements IClassTransformer
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	private void dumpBytes(String name, ClassWriter writer)
 	{
-		try 
+		try
 		{
 			name = (name.contains("$")) ? name.replace('$', '.') + ".class" : name + ".class";
 
@@ -98,7 +102,7 @@ public class ClassTransformer implements IClassTransformer
 			FileOutputStream stream = new FileOutputStream(bytecode_out);
 			stream.write(writer.toByteArray());
 			stream.close();
-		} catch (Exception ex) 
+		} catch (Exception ex)
 		{
 			System.out.println("Failed to dump bytecode for " + name);
 			ex.printStackTrace();

@@ -9,7 +9,7 @@
         "EssentialConfigMixin",
         "EssentialModelRendererMixin",
         "EssentialMultiplayerGuiMixin",
-        "GuiOptionsEditorMixin",
+        "MenuButtonMixin",
         "OnboardingDataMixin",
         "OnlineIndicatorMixin",
         "PauseMenuDisplayMixin"

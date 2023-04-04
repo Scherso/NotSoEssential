@@ -25,13 +25,12 @@
         "mixins.notsoessential.json"
     ],
     "depends": {
-        "fabricloader": ">=0.14.11",
+        "fabricloader": ">=${loaderversion}",
         "fabric-api": "*",
         "minecraft": "${mcversion}",
         "java": ">=17"
     },
     "suggests": {
-        "another-mod": "*",
         "essential": "*"
     }
 }
