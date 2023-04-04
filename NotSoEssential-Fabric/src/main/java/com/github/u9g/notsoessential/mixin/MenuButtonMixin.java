@@ -12,12 +12,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MenuButtonMixin
 {
 
-	@Inject(method = {
-		"<init>" // No descriptor to match all constructors.
-	}, at = @At("HEAD"), cancellable = true, remap = false)
-	private void nse$guiOptionsInit(final CallbackInfo ci)
-	{
-		ci.cancel();
-	}
+    @Inject(method = {
+        "<init>" // No descriptor to match all constructors.
+    }, at = @At("HEAD"), cancellable = true, remap = false)
+    private void nse$guiOptionsInit(final CallbackInfo ci)
+    {
+        ci.cancel();
+    }
 
 }

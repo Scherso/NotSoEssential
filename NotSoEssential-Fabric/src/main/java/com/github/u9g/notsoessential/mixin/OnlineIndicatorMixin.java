@@ -12,13 +12,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class OnlineIndicatorMixin
 {
 
-	@Inject(method = {
-		"drawNametagIndicator(Lgg/essential/universal/UMatrixStack;Lnet/minecraft/class_1297;Ljava/lang/String;I)V",
-		"drawTabIndicator(Lgg/essential/universal/UMatrixStack;Lnet/minecraft/class_640;II)V"
-	}, at = @At("HEAD"), cancellable = true, remap = false)
-	private void nse$overrideOnlineIndicator(final CallbackInfo ci)
-	{
-		ci.cancel();
-	}
+    @Inject(method = {
+        "drawNametagIndicator(Lgg/essential/universal/UMatrixStack;Lnet/minecraft/class_1297;Ljava/lang/String;I)V",
+        "drawTabIndicator(Lgg/essential/universal/UMatrixStack;Lnet/minecraft/class_640;II)V"
+    }, at = @At("HEAD"), cancellable = true, remap = false)
+    private void nse$overrideOnlineIndicator(final CallbackInfo ci)
+    {
+        ci.cancel();
+    }
 
 }

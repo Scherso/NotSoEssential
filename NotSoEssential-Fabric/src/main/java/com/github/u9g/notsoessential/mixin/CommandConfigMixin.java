@@ -14,18 +14,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class CommandConfigMixin
 {
 
-	/**
-	 * Removes the users ability to execute the '/essential' command.
-	 * Instead, the command will output 'no' into the chat.
-	 *
-	 * @param ci {@link CallbackInfo}
-	 */
-	@Inject(method = "handle()V", at = @At("HEAD"), cancellable = true, remap = false)
-	private void nse$handle(final CallbackInfo ci)
-	{
-		if (MinecraftClient.getInstance().player != null)
-			MinecraftClient.getInstance().player.sendMessage(Text.of("§7[§cNot §aSo §9Essential§7] §rno"));
-		ci.cancel();
-	}
+    /**
+     * Removes the users ability to execute the '/essential' command.
+     * Instead, the command will output 'no' into the chat.
+     *
+     * @param ci {@link CallbackInfo}
+     */
+    @Inject(method = "handle()V", at = @At("HEAD"), cancellable = true, remap = false)
+    private void nse$handle(final CallbackInfo ci)
+    {
+        if (MinecraftClient.getInstance().player != null)
+            MinecraftClient.getInstance().player.sendMessage(Text.of("§7[§cNot §aSo §9Essential§7] §rno"));
+        ci.cancel();
+    }
 
 }

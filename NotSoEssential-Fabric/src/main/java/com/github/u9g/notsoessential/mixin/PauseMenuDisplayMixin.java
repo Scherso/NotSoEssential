@@ -12,10 +12,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PauseMenuDisplayMixin
 {
 
-	@Inject(method = "init(Lnet/minecraft/class_437;)V", at = @At("HEAD"), cancellable = true, remap = false)
-	private void nse$init(final CallbackInfo ci)
-	{
-		ci.cancel();
-	}
+    @Inject(method = "init(Lnet/minecraft/class_437;)V", at = @At("HEAD"), cancellable = true, remap = false)
+    private void nse$init(final CallbackInfo ci)
+    {
+        ci.cancel();
+    }
 
 }

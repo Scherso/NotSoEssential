@@ -8,14 +8,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class NotSoEssential
 {
 
-	public static final String NAME = "@NAME@", VER = "@VER@", ID = "@ID@";
+    public static final String NAME = "@NAME@", VER = "@VER@", ID = "@ID@";
 
-	@Mod.EventHandler
-	public void preInitializationEvent(FMLPreInitializationEvent event)
-	{
-		ModMetadata data = event.getModMetadata();
-		data.name = "§cNot §aSo §9Essential";
-		data.description = "Keeps only what's §9Essential§r.";
-	}
+    @Mod.EventHandler
+    public void preInitializationEvent(FMLPreInitializationEvent event)
+    {
+        ModMetadata data = event.getModMetadata();
+        data.name = "§cNot §aSo §9Essential";
+        data.description = "Keeps only what's §9Essential§r.";
+    }
 
 }
