@@ -34,22 +34,17 @@ public class EssentialModelRendererTransformer implements ITransformer
     {
         for (MethodNode method : classNode.methods)
         {
-            switch (method.name)
+            for (final AbstractInsnNode INSN : method.instructions.toArray())
             {
-                case "cosmeticsShouldRender":
-                    for (final AbstractInsnNode INSN : method.instructions.toArray())
-                    {
-                        /* See 'FOR REFERENCE' comment above for clarification. */
-                        if (INSN instanceof VarInsnNode && INSN.getOpcode() == DSTORE)
-                        {
-                            method.instructions.insertBefore(INSN.getNext(), this.createInsnList(
-                                new InsnNode(ICONST_0),
-                                new InsnNode(IRETURN)
-                            ));
-                            method.instructions.remove(INSN);
-                        }
-                    }
-                    break;
+                if (INSN instanceof  VarInsnNode && INSN.getOpcode() == DSTORE)
+                {
+                    method.instructions.insertBefore(INSN.getNext(), this.createInsnList(
+                        new InsnNode(ICONST_0),
+                        new InsnNode(IRETURN)
+                    ));
+                    method.instructions.remove(INSN);
+                }
+            }
 //              case "render$39300608":
 //              case "doRenderLayer$278b9f3a$250b0546":
 //                  this.clearInstructions(method);
@@ -62,7 +57,6 @@ public class EssentialModelRendererTransformer implements ITransformer
 //                      new InsnNode(IRETURN)
 //                  ));
 //                  break;
-            }
         }
     }
 
