@@ -50,18 +50,18 @@ public class EssentialModelRendererTransformer implements ITransformer
                         }
                     }
                     break;
-                case "render$39300608":
-                case "doRenderLayer$278b9f3a$250b0546":
-                    this.clearInstructions(method);
-                    method.instructions.insert(new InsnNode(RETURN));
-                    break;
-                case "func_177142_b":
-                    this.clearInstructions(method);
-                    method.instructions.insert(this.createInsnList(
-                        new InsnNode(ICONST_0),
-                        new InsnNode(IRETURN)
-                    ));
-                    break;
+//              case "render$39300608":
+//              case "doRenderLayer$278b9f3a$250b0546":
+//                  this.clearInstructions(method);
+//                  method.instructions.insert(new InsnNode(RETURN));
+//                  break;
+//              case "func_177142_b":
+//                  this.clearInstructions(method);
+//                  method.instructions.insert(this.createInsnList(
+//                      new InsnNode(ICONST_0),
+//                      new InsnNode(IRETURN)
+//                  ));
+//                  break;
             }
         }
     }
