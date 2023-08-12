@@ -23,17 +23,14 @@
 
 <h4 align="left">
 
-- Remove player modal in main menu.
-- Remove player modal in pause menu.
-- Remove invite friends option.
-- Remove cosmetic options.
-- Remove all cosmetics.
-- Remove notifications.
-- "Essential Settings..." Removed in place of "Snooper Settings...".
-- Remove tab indicator.
-- Remove nametag indicator.
-- Remove Essential's ability connecting to external servers, i.e. telemetry.
-
+- Removes player modal in main menu.
+- Removes player modal in pause menu.
+- Removes invite friends option.
+- Removes all cosmetics and their options.
+- Removes notifications.
+- "Essential Settings..." removed and replaced by "Snooper Settings...".
+- Removes tab and nametag indicator.
+- Removes Essential's ability connecting to external servers, i.e. telemetry.
 </h4>
 
 [forge]: https://files.minecraftforge.net/net/minecraftforge/forge/index_1.8.9.html
