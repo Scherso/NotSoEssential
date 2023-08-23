@@ -19,12 +19,6 @@ public class EssentialModelRendererTransformer implements ITransformer
      * returned at head, most functions are returned false. The intended outcome is to cancel the rendering of
      * cosmetics.
      *
-     * <ul>
-     *     <li> {@link org.objectweb.asm.tree.VarInsnNode} is a node that represents a local variable instruction
-     *     that loads and stores the value of a local variable. </li>
-     *     <li> {@link org.objectweb.asm.Opcodes#DSTORE} stores a double into a local variable. </li>
-     * </ul>
-     *
      * @param classNode transformed class node
      * @param name      transformed class name
      * @see org.objectweb.asm.tree.VarInsnNode
@@ -34,29 +28,14 @@ public class EssentialModelRendererTransformer implements ITransformer
     {
         for (MethodNode method : classNode.methods)
         {
-            for (final AbstractInsnNode INSN : method.instructions.toArray())
+            if (method.name.equals("cosmeticsShouldRender"))
             {
-                if (INSN instanceof  VarInsnNode && INSN.getOpcode() == DSTORE)
-                {
-                    method.instructions.insertBefore(INSN.getNext(), this.createInsnList(
-                        new InsnNode(ICONST_0),
-                        new InsnNode(IRETURN)
-                    ));
-                    method.instructions.remove(INSN);
-                }
+                this.clearInstructions(method);
+                method.instructions.insert(this.createInsnList(
+                    new InsnNode(ICONST_0),
+                    new InsnNode(IRETURN)
+                ));
             }
-//              case "render$39300608":
-//              case "doRenderLayer$278b9f3a$250b0546":
-//                  this.clearInstructions(method);
-//                  method.instructions.insert(new InsnNode(RETURN));
-//                  break;
-//              case "func_177142_b":
-//                  this.clearInstructions(method);
-//                  method.instructions.insert(this.createInsnList(
-//                      new InsnNode(ICONST_0),
-//                      new InsnNode(IRETURN)
-//                  ));
-//                  break;
         }
     }
 
