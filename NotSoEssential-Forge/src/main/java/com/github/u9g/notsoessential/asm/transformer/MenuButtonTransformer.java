@@ -37,10 +37,10 @@ public class MenuButtonTransformer implements ITransformer
         {
             if (method.name.equals("<init>"))
             {
-                for (final AbstractInsnNode INSN : method.instructions.toArray())
+                for (AbstractInsnNode insn : method.instructions.toArray())
                 {
-                    if (INSN instanceof FieldInsnNode && INSN.getOpcode() == PUTFIELD)
-                        method.instructions.remove(INSN);
+                    if (insn instanceof FieldInsnNode && insn.getOpcode() == PUTFIELD)
+                        method.instructions.remove(insn);
                 }
             }
         }

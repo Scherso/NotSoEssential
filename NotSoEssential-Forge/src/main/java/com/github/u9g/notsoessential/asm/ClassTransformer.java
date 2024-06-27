@@ -45,6 +45,7 @@ public class ClassTransformer implements IClassTransformer
         registerTransformer(new OnlineIndicatorTransformer());
         registerTransformer(new PauseMenuDisplayTransformer());
         registerTransformer(new MixinLogExceptionsTransformer());
+        registerTransformer(new ExtensionsKtTransformer());
     }
 
     /**

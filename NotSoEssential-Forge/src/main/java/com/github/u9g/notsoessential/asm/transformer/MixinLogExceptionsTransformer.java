@@ -13,7 +13,7 @@ public class MixinLogExceptionsTransformer implements ITransformer
     @Override
     public String getClassName()
     {
-        return ("gg.essential.mixins.transformers.client.network");
+        return ("gg.essential.mixins.transformers.client.network.Mixin_LogExceptions");
     }
 
     @Override
