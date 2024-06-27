@@ -24,7 +24,7 @@ public class CommandConfigMixin
     private void nse$handle(final CallbackInfo ci)
     {
         if (MinecraftClient.getInstance().player != null)
-            MinecraftClient.getInstance().player.sendMessage(Text.of("§7[§cNot §aSo §9Essential§7] §rno"));
+//            MinecraftClient.getInstance().player.sendMessage(Text.of("§7[§cNot §aSo §9Essential§7] §rno"));
         ci.cancel();
     }
 
