@@ -38,14 +38,13 @@ public class ClassTransformer implements IClassTransformer
         registerTransformer(new ConnectionManagerTransformer());
         registerTransformer(new ConnectionTransformer());
         registerTransformer(new EssentialConfigTransformer());
-        registerTransformer(new EssentialModelRendererTransformer());
+//      registerTransformer(new EssentialModelRendererTransformer());
         registerTransformer(new EssentialMultiplayerGuiTransformer());
         registerTransformer(new MenuButtonTransformer());
         registerTransformer(new OnboardingDataTransformer());
         registerTransformer(new OnlineIndicatorTransformer());
         registerTransformer(new PauseMenuDisplayTransformer());
         registerTransformer(new MixinLogExceptionsTransformer());
-        registerTransformer(new ExtensionsKtTransformer());
     }
 
     /**
@@ -64,6 +63,14 @@ public class ClassTransformer implements IClassTransformer
         } else transformer_list.add(transformer);
     }
 
+    /**
+     * dump stupid ass bytes for people who can't read code so i had to separate it into
+     * another function :3
+     * @param name
+     * @param transformedName
+     * @param bytes
+     * @return
+     */
     @Override
     public byte[] transform(final String name, final String transformedName, byte[] bytes)
     {
