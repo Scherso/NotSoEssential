@@ -42,7 +42,7 @@ loom {
     runConfigs {
         getByName("client") {
             property("NSE.debugBytecode", "true")
-            vmArgs("-Dfml.coreMods.load com.github.scherso.notsoessential.FMLPlugin")
+            programArgs("-Dfml.coreMods.load", "com.github.scherso.notsoessential.FMLPlugin")
         }
     }
 
