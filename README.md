@@ -14,7 +14,7 @@
 
 ## Installation Guide
 
-1. **Install Minecraft 1.8.9, 1.12.2, 1.16.5 and above**
+1. **Install Minecraft 1.8.9, 1.12.2, 1.16.5 and above.**
 2. **Install the [Forge Mod Loader][forge] or the [Fabric Mod Loader][fabric].**
 3. **Place the mod in your `minecraft/mods` directory.**
 4. **If you'd like, [build the mod yourself][build].** 
