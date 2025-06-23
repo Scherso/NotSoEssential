@@ -9,6 +9,7 @@
         "EssentialConfigMixin",
         "EssentialModelRendererMixin",
         "EssentialMultiplayerGuiMixin",
+        "EssentialSetupPreLaunchMixin",
         "MenuButtonMixin",
         "OnboardingDataMixin",
         "OnlineIndicatorMixin",
