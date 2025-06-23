@@ -1,12 +1,12 @@
 plugins {
     idea
     java
-    id("fabric-loom") version ("1.0-SNAPSHOT")
+    id("fabric-loom") version ("1.10.5")
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
