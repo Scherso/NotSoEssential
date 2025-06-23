@@ -14,10 +14,10 @@
 
 ## Installation Guide
 
-1. **Install Minecraft 1.8.9.**
-2. **Install the [Forge Loader for 1.8.9][forge].**
-3. **[Build the Mod with Gradle][build].**
-4. **Place the mod in your `minecraft/mods` directory.**
+1. **Install Minecraft 1.8.9, 1.12.2, 1.16.5 and above**
+2. **Install the [Forge Mod Loader][forge] or the [Fabric Mod Loader][fabric].**
+3. **Place the mod in your `minecraft/mods` directory.**
+4. **If you'd like, [build the mod yourself][build].** 
 
 ## Features
 
@@ -34,5 +34,6 @@
 </h4>
 
 [forge]: https://files.minecraftforge.net/net/minecraftforge/forge/index_1.8.9.html
+[fabric]: https://wiki.fabricmc.net/install
 
 [build]: https://github.com/Scherso/NotSoEssential/wiki/Build-With-Gradle
