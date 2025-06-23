@@ -44,7 +44,7 @@ loom {
             property("NSE.debugBytecode", "true")
             /* Ensuring that the forge mod is loaded as a core-mod.
              * @see com.github.u9g.notsoessential.FMLPlugin */
-            arg("-Dfml.coreMods.load", "com.github.u9g.notsoessential.FMLPlugin")
+            arg("-Dfml.coreMods.load", "com.github.scherso.notsoessential.FMLPlugin")
         }
     }
 
@@ -72,7 +72,7 @@ tasks.named<Jar>("jar") {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest.attributes.run {
         this["Manifest-Version"] = "1.0"
-        this["FMLCorePlugin"] = "com.github.u9g.notsoessential.FMLPlugin"
+        this["FMLCorePlugin"] = "com.github.scherso.notsoessential.FMLPlugin"
         this["ModType"] = "FML"
         this["FMLCorePluginContainsFMLMod"] = "true"
         this["ForceLoadAsMod"] = "true"

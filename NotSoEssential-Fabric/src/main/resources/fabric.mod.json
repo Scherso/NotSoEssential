@@ -19,7 +19,7 @@
     "environment": "client",
     "entrypoints": {
         "main": [
-            "com.github.u9g.notsoessential.NotSoEssential"
+            "com.github.scherso.notsoessential.NotSoEssential"
         ]
     },
     "mixins": [
