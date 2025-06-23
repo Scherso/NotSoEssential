@@ -2,7 +2,7 @@
 
 <p align="center">
 
-  <img src="https://raw.githubusercontent.com/Scherso/NotSoEssential/main/.github/NOTSOESSENTIAL.svg">
+  <img src=".github/NOTSOESSENTIAL.svg">
 
 </p>
 
