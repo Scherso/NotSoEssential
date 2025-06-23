@@ -25,9 +25,6 @@
     "mixins": [
         "mixins.notsoessential.json"
     ],
-    "depends": {
-        "java": ">=17"
-    },
     "suggests": {
         "essential": "*"
     }
