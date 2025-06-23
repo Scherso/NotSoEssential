@@ -3,7 +3,7 @@ import dev.architectury.pack200.java.Pack200Adapter
 plugins {
     idea
     java
-    id("gg.essential.loom") version ("0.10.0.+")
+    id("gg.essential.loom") version ("1.9.31")
     id("dev.architectury.architectury-pack200") version ("0.1.3")
     id("net.kyori.blossom") version ("1.3.1")
 }
@@ -39,12 +39,10 @@ dependencies {
 
 loom {
     silentMojangMappingsLicense()
-    launchConfigs {
+    runConfigs {
         getByName("client") {
             property("NSE.debugBytecode", "true")
-            /* Ensuring that the forge mod is loaded as a core-mod.
-             * @see com.github.scherso.notsoessential.FMLPlugin */
-            arg("-Dfml.coreMods.load", "com.github.scherso.notsoessential.FMLPlugin")
+            vmArgs("-Dfml.coreMods.load com.github.scherso.notsoessential.FMLPlugin")
         }
     }
 
@@ -71,11 +69,11 @@ tasks.named<Jar>("jar") {
     archiveBaseName.set(projectName)
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest.attributes.run {
-        this["Manifest-Version"] = "1.0"
-        this["FMLCorePlugin"] = "com.github.scherso.notsoessential.FMLPlugin"
-        this["ModType"] = "FML"
+        this["Manifest-Version"]            = "1.0"
+        this["FMLCorePlugin"]               = "com.github.scherso.notsoessential.FMLPlugin"
+        this["ModType"]                     = "FML"
         this["FMLCorePluginContainsFMLMod"] = "true"
-        this["ForceLoadAsMod"] = "true"
-        this["TweakOrder"] = "0"
+        this["ForceLoadAsMod"]              = "true"
+        this["TweakOrder"]                  = "0"
     }
 }
