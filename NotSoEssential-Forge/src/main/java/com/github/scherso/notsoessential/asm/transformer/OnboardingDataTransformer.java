@@ -22,7 +22,7 @@ public class OnboardingDataTransformer implements ITransformer
      *
      * <ul>
      *     <li> {@link org.objectweb.asm.Opcodes#ICONST_0} Pushes a constant 0 value
-     *     onto the stack, in a boolean context, the value is 'false'. </li>
+     *     onto the stack; in a boolean context, the value is 'false'. </li>
      *     <li> {@link org.objectweb.asm.Opcodes#ICONST_1} Pushes a constant 1 value
      *     onto the stack, in a boolean context, the value if 'true'. </li>
      *     <li> {@link org.objectweb.asm.Opcodes#IRETURN} Returns an integer value

@@ -17,7 +17,7 @@ public class PauseMenuDisplayTransformer implements ITransformer
     }
 
     /**
-     * Remove the pause menu display, i.e. The floating buttons and widgets that interact with Essential in the pause
+     * Remove the pause menu display, i.e., The floating buttons and widgets that interact with Essential in the pause
      * menu.
      *
      * @param classNode transformed class node

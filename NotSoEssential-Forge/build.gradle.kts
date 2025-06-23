@@ -43,7 +43,7 @@ loom {
         getByName("client") {
             property("NSE.debugBytecode", "true")
             /* Ensuring that the forge mod is loaded as a core-mod.
-             * @see com.github.u9g.notsoessential.FMLPlugin */
+             * @see com.github.scherso.notsoessential.FMLPlugin */
             arg("-Dfml.coreMods.load", "com.github.scherso.notsoessential.FMLPlugin")
         }
     }

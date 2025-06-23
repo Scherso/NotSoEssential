@@ -20,7 +20,7 @@ public class ConnectionManagerTransformer implements ITransformer
      * Attempts to cancel any external connections made via Essential itself, i.e. telemetry. <br> Although
      * {@link OnboardingDataTransformer} already attempts to deny the
      * terms of service, which in turn would *hopefully* prevent any external connections, this is a failsafe, and
-     * confirms that there is absolutely no external connections made.
+     * confirms that there are absolutely no external connections made.
      *
      * <ul>
      *     <li> {@link org.objectweb.asm.Opcodes#ICONST_0} Pushes a constant 0 value
