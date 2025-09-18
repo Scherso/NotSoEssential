@@ -30,7 +30,8 @@ public class MenuButtonTransformer implements ITransformer
     {
         for (MethodNode method : classNode.methods)
         {
-            if (method.name.equals("draw") || method.name.equals("render")) {
+            if (method.name.equals("draw") || method.name.equals("render"))
+            {
                 method.instructions.clear();
                 method.instructions.add(new InsnNode(RETURN));
             }
