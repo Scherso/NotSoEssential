@@ -36,7 +36,10 @@ public class MenuButtonTransformer implements ITransformer
                 method.localVariables.clear();
                 method.tryCatchBlocks.clear();
 
-                // Add parameter null check (like original method does)
+                // Adds a parameter null check similar to the original method.
+                // This was a hacky solution to a crazy VerifyError,
+                // and hopefully this will ensure that the instruction
+                // type matches the stack map.
                 method.instructions.add(new VarInsnNode(ALOAD, 1)); // matrixStack
                 method.instructions.add(new LdcInsnNode("matrixStack"));
                 method.instructions.add(new MethodInsnNode(INVOKESTATIC,
@@ -47,7 +50,6 @@ public class MenuButtonTransformer implements ITransformer
 
                 method.instructions.add(new InsnNode(RETURN));
 
-                // Reset max stack and locals
                 method.maxStack  = 2;
                 method.maxLocals = 2;
 
