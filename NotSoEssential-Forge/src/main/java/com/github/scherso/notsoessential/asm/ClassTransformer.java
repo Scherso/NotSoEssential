@@ -78,7 +78,7 @@ public class ClassTransformer implements IClassTransformer
             final ClassReader  cr          = new ClassReader(bytes);        /* Statement is written differently for performance.   */
             cr.accept(cn, 0);
             transformer.transform(cn, transformedName);
-            final ClassWriter cw = new ClassWriter(cr, 0);
+            final ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_FRAMES);
             cn.accept(cw);
 
             if (DUMP_BYTECODE) this.dumpBytes(transformedName, cw);

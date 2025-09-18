@@ -3,7 +3,7 @@ package com.github.scherso.notsoessential.asm.transformer;
 import com.github.scherso.notsoessential.asm.ITransformer;
 import org.objectweb.asm.tree.*;
 
-import static org.objectweb.asm.Opcodes.RETURN;
+import static org.objectweb.asm.Opcodes.*;
 
 public class MenuButtonTransformer implements ITransformer
 {
@@ -30,10 +30,28 @@ public class MenuButtonTransformer implements ITransformer
     {
         for (MethodNode method : classNode.methods)
         {
-            if (method.name.equals("draw") || method.name.equals("render"))
+            if (method.name.equals("draw"))
             {
                 method.instructions.clear();
+                method.localVariables.clear();
+                method.tryCatchBlocks.clear();
+
+                // Add parameter null check (like original method does)
+                method.instructions.add(new VarInsnNode(ALOAD, 1)); // matrixStack
+                method.instructions.add(new LdcInsnNode("matrixStack"));
+                method.instructions.add(new MethodInsnNode(INVOKESTATIC,
+                    "kotlin/jvm/internal/Intrinsics",
+                    "checkNotNullParameter",
+                    "(Ljava/lang/Object;Ljava/lang/String;)V",
+                    false));
+
                 method.instructions.add(new InsnNode(RETURN));
+
+                // Reset max stack and locals
+                method.maxStack  = 2;
+                method.maxLocals = 2;
+
+                break;
             }
         }
     }
