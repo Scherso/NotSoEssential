@@ -1,12 +1,9 @@
 package com.github.scherso.notsoessential.asm.transformer;
 
 import com.github.scherso.notsoessential.asm.ITransformer;
-import org.objectweb.asm.tree.AbstractInsnNode;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.*;
 
-import static org.objectweb.asm.Opcodes.PUTFIELD;
+import static org.objectweb.asm.Opcodes.RETURN;
 
 public class MenuButtonTransformer implements ITransformer
 {
@@ -22,9 +19,7 @@ public class MenuButtonTransformer implements ITransformer
      * Settings...' button in the options menu.
      *
      * <ul>
-     *     <li> {@link org.objectweb.asm.Opcodes#PUTFIELD} Sets an instance field defined by
-     *     the owner class and the field’s name and descriptor. </li>
-     *     <li> {@link FieldInsnNode} A node that represents a field instruction. </li>
+     *     <li> {@link org.objectweb.asm.Opcodes#RETURN} same as {@code return}.
      * </ul>
      *
      * @param classNode transformed class node
@@ -35,13 +30,9 @@ public class MenuButtonTransformer implements ITransformer
     {
         for (MethodNode method : classNode.methods)
         {
-            if (method.name.equals("<init>"))
-            {
-                for (AbstractInsnNode insn : method.instructions.toArray())
-                {
-                    if (insn instanceof FieldInsnNode && insn.getOpcode() == PUTFIELD)
-                        method.instructions.remove(insn);
-                }
+            if (method.name.equals("draw") || method.name.equals("render")) {
+                method.instructions.clear();
+                method.instructions.add(new InsnNode(RETURN));
             }
         }
     }
