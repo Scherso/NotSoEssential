@@ -40,6 +40,7 @@ public class ClassTransformer implements IClassTransformer
         registerTransformer(new EssentialConfigTransformer());
         registerTransformer(new EssentialModelRendererTransformer());
         registerTransformer(new EssentialMultiplayerGuiTransformer());
+        registerTransformer(new MenuButtonCompanionTransformer());
         registerTransformer(new MenuButtonTransformer());
         registerTransformer(new OnboardingDataTransformer());
         registerTransformer(new OnlineIndicatorTransformer());
