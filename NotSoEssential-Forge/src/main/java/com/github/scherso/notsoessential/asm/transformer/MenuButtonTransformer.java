@@ -32,9 +32,7 @@ public class MenuButtonTransformer implements ITransformer
         {
             if (method.name.equals("draw"))
             {
-                method.instructions.clear();
-                method.localVariables.clear();
-                method.tryCatchBlocks.clear();
+                this.clearInstructions(method);
 
                 // Adds a parameter null check similar to the original method.
                 // This was a hacky solution to a crazy VerifyError,
