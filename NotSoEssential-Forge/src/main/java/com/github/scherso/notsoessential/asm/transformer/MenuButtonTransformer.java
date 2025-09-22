@@ -30,7 +30,7 @@ public class MenuButtonTransformer implements ITransformer
     {
         for (MethodNode method : classNode.methods)
         {
-            if (method.name.equals("draw"))
+            if (method.name.startsWith("draw"))
             {
                 this.clearInstructions(method);
 
@@ -50,8 +50,13 @@ public class MenuButtonTransformer implements ITransformer
 
                 method.maxStack  = 2;
                 method.maxLocals = 2;
+            }
 
-                break;
+            if (method.name.equals("runAction"))
+            {
+                this.clearInstructions(method);
+
+                method.instructions.insert(new InsnNode(RETURN));
             }
         }
     }
