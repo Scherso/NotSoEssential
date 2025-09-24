@@ -6,11 +6,13 @@
         "CommandConfigMixin",
         "ConnectionManagerMixin",
         "ConnectionMixin",
+        "EssentialAPIMixin",
         "EssentialConfigMixin",
         "EssentialModelRendererMixin",
         "EssentialMultiplayerGuiMixin",
         "EssentialSetupPreLaunchMixin",
         "MenuButtonMixin",
+        "ModCheckerMixin",
         "OnboardingDataMixin",
         "OnlineIndicatorMixin",
         "PauseMenuDisplayMixin"
