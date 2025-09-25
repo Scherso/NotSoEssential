@@ -40,11 +40,13 @@ public class MenuButtonTransformer implements ITransformer
                 // type matches the stack map.
                 method.instructions.add(new VarInsnNode(ALOAD, 1)); // matrixStack
                 method.instructions.add(new LdcInsnNode("matrixStack"));
-                method.instructions.add(new MethodInsnNode(INVOKESTATIC,
+                method.instructions.add(new MethodInsnNode(
+                    INVOKESTATIC,
                     "kotlin/jvm/internal/Intrinsics",
                     "checkNotNullParameter",
                     "(Ljava/lang/Object;Ljava/lang/String;)V",
-                    false));
+                    false
+                ));
 
                 method.instructions.add(new InsnNode(RETURN));
 
