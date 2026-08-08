@@ -1,6 +1,7 @@
 package com.github.scherso.notsoessential.asm.transformer;
 
 import com.github.scherso.notsoessential.asm.ITransformer;
+import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
 import static org.objectweb.asm.Opcodes.*;
@@ -50,8 +51,13 @@ public class MenuButtonTransformer implements ITransformer
 
                 method.instructions.add(new InsnNode(RETURN));
 
+                /* maxLocals must still seat every incoming argument, or the
+                 * class is rejected outright with "Arguments can't fit into
+                 * locals". 'draw' takes only the matrix stack, but
+                 * 'drawDefaultButton' also takes a style, so the count is
+                 * derived from the descriptor rather than assumed. */
                 method.maxStack  = 2;
-                method.maxLocals = 2;
+                method.maxLocals = this.localsFor(method);
             }
 
             if (method.name.equals("runAction"))
@@ -61,6 +67,22 @@ public class MenuButtonTransformer implements ITransformer
                 method.instructions.insert(new InsnNode(RETURN));
             }
         }
+    }
+
+    /**
+     * Counts the local variable slots occupied by a method's arguments, including the implicit {@code this} of an
+     * instance method. Wide types, i.e. {@code long} and {@code double}, take two slots apiece.
+     *
+     * @param method the method whose arguments are to be seated
+     * @return the minimum legal {@code maxLocals} for the method
+     */
+    private int localsFor(MethodNode method)
+    {
+        int locals = ((method.access & ACC_STATIC) != 0) ? 0 : 1;
+        for (Type argument : Type.getArgumentTypes(method.desc))
+            locals += argument.getSize();
+
+        return (locals);
     }
 
 }

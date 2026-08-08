@@ -35,6 +35,7 @@ public class ClassTransformer implements IClassTransformer
     public ClassTransformer()
     {
         registerTransformer(new CommandConfigTransformer());
+        registerTransformer(new ConnectionManagerKtTransformer());
         registerTransformer(new ConnectionManagerTransformer());
         registerTransformer(new ConnectionTransformer());
         registerTransformer(new EssentialConfigTransformer());
