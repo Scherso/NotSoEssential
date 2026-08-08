@@ -25,9 +25,13 @@ public class EssentialConfigTransformer implements ITransformer
      *     <li> {@code getShowEssentialIndicatorOnNametag} as false. </li>
      *     <li> {@code getEssentialEnabled} as false. </li>
      *     <li> {@code getEssentialFull} as false. </li>
+     *     <li> {@code getReplaceWindowTitle} as false. </li>
      *     <li> {@code getDisableCosmetics} as true. </li>
      *     <li> {@code getDisableAllNotifications} as true. </li>
      * </ul>
+     * <p> {@code getReplaceWindowTitle} defaults to <i>on</i>, and {@code WindowTitleManager.updateTitle} consults it
+     * alone, without also testing {@code getEssentialEnabled} or the terms of service. Left untouched, Essential
+     * rewrites the window title to "Minecraft* &lt;version&gt;" and advertises itself through the asterisk. </p>
      * <p> Reference, </p>
      * <ul>
      *     <li> {@link org.objectweb.asm.Opcodes#ICONST_0} Pushes a constant 0 value
@@ -52,6 +56,7 @@ public class EssentialConfigTransformer implements ITransformer
                 case "getShowEssentialIndicatorOnNametag":
                 case "getEssentialEnabled":
                 case "getEssentialFull":
+                case "getReplaceWindowTitle":
                     this.clearInstructions(method);
                     method.instructions.insert(this.createInsnList(
                         /* Inserting the following
