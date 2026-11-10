@@ -34,6 +34,7 @@ public class ClassTransformer implements IClassTransformer
 
     public ClassTransformer()
     {
+        registerTransformer(new ChatComponentSerializerTransformer());
         registerTransformer(new CommandConfigTransformer());
         registerTransformer(new ConnectionManagerKtTransformer());
         registerTransformer(new ConnectionManagerTransformer());
