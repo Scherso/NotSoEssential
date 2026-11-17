@@ -10,7 +10,6 @@
         "EssentialConfigMixin",
         "EssentialModelRendererMixin",
         "EssentialMultiplayerGuiMixin",
-        "EssentialSetupPreLaunchMixin",
         "MenuButtonMixin",
         "ModCheckerMixin",
         "OnboardingDataMixin",
