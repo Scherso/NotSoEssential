@@ -20,11 +20,11 @@
     "entrypoints": {
         "main": [
             "com.github.scherso.notsoessential.NotSoEssential"
+        ],
+        "preLaunch": [
+            "com.github.scherso.notsoessential.NotSoEssentialPreLaunch"
         ]
     },
-    "mixins": [
-        "mixins.notsoessential.json"
-    ],
     "suggests": {
         "essential": "*"
     }
